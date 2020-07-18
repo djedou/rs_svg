@@ -2,8 +2,9 @@ use djed::{
     macros::Properties,
     //callback::Callback,
 };
+use serde::Serialize;
 
-#[derive(Clone, PartialEq, Properties)]
+#[derive(Clone, PartialEq, Properties, Serialize)]
 pub struct LineProps {
     #[prop_or_default]
     pub x1: String,
@@ -23,5 +24,9 @@ pub struct LineProps {
     #[prop_or_default]
     pub tabindex: String,
 
-    pub style: String
+    pub style: String,
+
+    pub stroke: String,
+    pub stroke_width: String,
+    pub fill: String
 }

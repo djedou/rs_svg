@@ -5,6 +5,6 @@ pub use line::{
     Line
 };
 
-pub use line_attributes::{
+/*pub use line_attributes::{
     LineProps
-};
+};*/
