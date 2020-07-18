@@ -17,6 +17,7 @@ pub struct Line {
     path_length: String,
     id: String,
     tabindex: String,
+    style: String,
 }
 
 pub enum State {
@@ -40,6 +41,7 @@ impl Component for Line {
             path_length: props.path_length,
             id: props.id,
             tabindex: props.tabindex,
+            style: props.style,
         }
     }
 
@@ -62,6 +64,7 @@ impl Component for Line {
         self.path_length = props.path_length;
         self.id = props.id;
         self.tabindex = props.tabindex;
+        self.style = props.style;
 
 
         true
@@ -77,6 +80,7 @@ impl Component for Line {
                 pathLength = self.path_length
                 id = self.id
                 tabindex = self.tabindex
+                style = self.style
             />
         }
     }

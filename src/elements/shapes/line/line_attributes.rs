@@ -22,4 +22,6 @@ pub struct LineProps {
     /// Core Attribute
     #[prop_or_default]
     pub tabindex: String,
+
+    pub style: String
 }
