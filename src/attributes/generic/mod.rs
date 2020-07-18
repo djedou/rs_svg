@@ -1,0 +1,1 @@
+pub mod core_attr_props;
