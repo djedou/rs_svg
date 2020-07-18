@@ -59,7 +59,7 @@ impl Component for Line {
 
     fn view(&self) -> Html {
         html! {
-            <line />
+            <line ref={self.node_ref.clone()} />
             
         }
     }
