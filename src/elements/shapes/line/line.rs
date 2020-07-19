@@ -19,7 +19,7 @@ pub struct Line {
     //link: ComponentLink<Self>,
     //line: Option<SvgLineElement>,
     //node_ref: NodeRef,
-    x1: String,
+    x1: Option<String>,
     x2: String,
     y1: String,
     y2: String,
@@ -99,10 +99,10 @@ impl Component for Line {
             y2: self.y2.clone().into(),
         };*/
      
-        html! {{
+        html! {
             LineBasic {
-                x1: self.x1.as_ref(),
-                x2: self.x2.as_ref(),
+                x1: self.x1.clone(),
+                /*x2: self.x2.as_ref(),
                 y1: self.y1.as_ref(),
                 y2: self.y2.as_ref(),
                 path_length: self.path_length.as_ref(),
@@ -111,9 +111,9 @@ impl Component for Line {
                 style: self.style.as_ref(),
                 stroke: self.stroke.as_ref(),
                 stroke_width: self.stroke_width.as_ref(),
-                fill: self.fill.as_ref(),
+                fill: self.fill.as_ref(),*/
             }
-    }}  
+        }  
     }
 }
 
@@ -203,9 +203,9 @@ impl Line {
 
 
 markup::define! {
-    LineBasic<'a>(
-        x1: &'a str,
-        x2: &'a str,
+    LineBasic(
+        x1: Option<String>,
+        /*x2: &'a str,
         y1: &'a str,
         y2: &'a str,
         path_length: &'a str,
@@ -214,12 +214,12 @@ markup::define! {
         style: &'a str,
         stroke: &'a str,
         stroke_width: &'a str,
-        fill: &'a str,
+        fill: &'a str,*/
     )
     {
         line [
                 x1 = x1,
-                x2 = x2,
+                /*x2 = x2,
                 y1 = y1,
                 y2 = y2,
                 pathLength = path_length,
@@ -228,7 +228,7 @@ markup::define! {
                 style = style,
                 stroke = stroke,
                 stroke_width = stroke_width,
-                fill = fill
+                fill = fill*/
             ] {}
     }
 }

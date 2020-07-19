@@ -9,8 +9,8 @@ pub struct LineProps {
 
     // own Attribute
     /// Defines the x-axis coordinate of the line starting point.
-    #[prop_or_default]
-    pub x1: String,
+    #[prop_or(None)]
+    pub x1: Option<String>,
     /// Defines the x-axis coordinate of the line ending point.
     #[prop_or_default]
     pub x2: String,
@@ -50,5 +50,5 @@ pub struct LineProps {
     pub fill: String
 
     // Global Event
-    
+
 }
