@@ -1,22 +1,15 @@
 use djed::{
     html, 
-    djed::{Component, ComponentLink, Html,NodeRef, ShouldRender},
+    djed::{Component, ComponentLink, Html, ShouldRender},
     djed_dom::{VNode},
-    //callback::Callback,
-    //macros::Properties
 };
 use super::line_attributes::LineProps;
-use crate::utils::get_field_by_name;
+use crate::utils::set_attribute;
 
-
-use web_sys::{SvgElement, SvgTextElement, SvggElement, SvgLineElement};
-
-/// Line component can have the following Attributes:: 
-/// x1, x2, y1, y2, path_length,
 
 /// Core Attribute
 /// id, tabindex, style
-pub struct Line {
+pub struct SvgLine {
     //link: ComponentLink<Self>,
     //line: Option<SvgLineElement>,
     //node_ref: NodeRef,
@@ -25,12 +18,13 @@ pub struct Line {
     y1: Option<String>,
     y2: Option<String>,
     path_length: Option<String>,
+
     id: Option<String>,
     tabindex: Option<String>,
+
     style: Option<String>,
-    stroke: Option<String>,
-    stroke_width: Option<String>,
-    fill: Option<String>
+    class: Option<String>,
+
 }
 
 pub enum State {
@@ -38,12 +32,12 @@ pub enum State {
 }
 
 
-impl Component for Line {
+impl Component for SvgLine {
     type State = State;
     type Props = LineProps;
 
     fn create(props: Self::Props, _link: ComponentLink<Self>) -> Self {
-        Line {
+        SvgLine {
             //line: None,
             //node_ref: NodeRef::default(),
             x1: props.x1,
@@ -51,12 +45,12 @@ impl Component for Line {
             y1: props.y1,
             y2: props.y2,
             path_length: props.path_length, 
+
             id: props.id,
             tabindex: props.tabindex,
+
             style: props.style,
-            stroke: props.stroke,
-            stroke_width: props.stroke_width,
-            fill: props.fill
+            class: props.class,
         }
     }
 
@@ -78,55 +72,58 @@ impl Component for Line {
         self.id = props.id;
         self.tabindex = props.tabindex;
         self.style = props.style;
-        self.stroke = props.stroke;
-        self.stroke_width = props.stroke_width;
-        self.fill = props.fill;
+        self.class = props.class;
 
 
         true
     }
-/*
-    fn rendered(&mut self, _first_render: bool) {
-        //let line = self.node_ref.cast::<SvgLineElement>().unwrap();
-        self.line = Some(line);
-    }
-*/
 
     fn view(&self) -> Html {
 
         let mut line_tag = html! {<line />};
 
-        if let Some(x1_data) = self.x1.as_ref() {
+        /*if let Some(x1_data) = self.x1.as_ref() {
             if let VNode::VTag(tag) = &mut line_tag {
                 tag.add_attribute("x1", x1_data);
             }
-        }
+        }*/
+        // pub fn set_attribute<'a, T: Display>(attr: &Option<T>, tagget: &mut VNode, attr_name: &'a str) {
 
-        if let Some(x2_data) = self.x2.as_ref() {
+        set_attribute::<String>(&self.x1, &mut line_tag, "x1");
+        set_attribute::<String>(&self.x2, &mut line_tag, "x2");
+        set_attribute::<String>(&self.y1, &mut line_tag, "y1");
+        set_attribute::<String>(&self.y2, &mut line_tag, "y2");
+        set_attribute::<String>(&self.path_length, &mut line_tag, "pathLength");
+        set_attribute::<String>(&self.id, &mut line_tag, "id");
+        set_attribute::<String>(&self.tabindex, &mut line_tag, "tabindex");
+        set_attribute::<String>(&self.style, &mut line_tag, "style");
+        set_attribute::<String>(&self.class, &mut line_tag, "class");
+
+        /*if let Some(x2_data) = self.x2.as_ref() {
             if let VNode::VTag(tag) = &mut line_tag {
                 tag.add_attribute("x2", x2_data);
             }
-        }
+        }*/
 
-        if let Some(y1_data) = self.y1.as_ref() {
+        /*if let Some(y1_data) = self.y1.as_ref() {
             if let VNode::VTag(tag) = &mut line_tag {
                 tag.add_attribute("y1", y1_data);
             }
-        }
+        }*/
 
-        if let Some(y2_data) = self.y2.as_ref() {
+        /*if let Some(y2_data) = self.y2.as_ref() {
             if let VNode::VTag(tag) = &mut line_tag {
                 tag.add_attribute("y2", y2_data);
             }
-        }
+        }*/
 
-        if let Some(path_length_data) = self.path_length.as_ref() {
+        /*if let Some(path_length_data) = self.path_length.as_ref() {
             if let VNode::VTag(tag) = &mut line_tag {
                 tag.add_attribute("pathLength", path_length_data);
             }
-        }
+        }*/
 
-        if let Some(y2_data) = self.y2.as_ref() {
+        /*if let Some(y2_data) = self.y2.as_ref() {
             if let VNode::VTag(tag) = &mut line_tag {
                 tag.add_attribute("y2", y2_data);
             }
@@ -150,161 +147,14 @@ impl Component for Line {
             }
         }
 
-        if let Some(stroke_data) = self.stroke.as_ref() {
+        if let Some(class_data) = self.class.as_ref() {
             if let VNode::VTag(tag) = &mut line_tag {
-                tag.add_attribute("stroke", stroke_data);
+                tag.add_attribute("class", class_data);
             }
-        }
-
-        if let Some(stroke_width_data) = self.stroke_width.as_ref() {
-            if let VNode::VTag(tag) = &mut line_tag {
-                tag.add_attribute("stroke-width", stroke_width_data);
-            }
-        }
-
-        if let Some(fill_data) = self.fill.as_ref() {
-            if let VNode::VTag(tag) = &mut line_tag {
-                tag.add_attribute("fill", fill_data);
-            }
-        }
-
-        line_tag
-        /*html! {
-            
-            
-            <line
-                x1 = self.x1
-                x2 = self.x2
-                y1 = self.y1
-                y2 = self.y2
-                pathLength = self.path_length
-                id = self.id
-                tabindex = self.tabindex
-                style = self.style
-                stroke = self.stroke
-                stroke_width = self.stroke_width
-                fill = self.fill
-            />
-            
-        }*/ 
-    }
-}
-
-/*LineBasic {
-                x1: self.x1.clone(),
-                x2: self.x2.clone(),
-                y1: self.y1.clone(),
-                y2: self.y2.clone(),
-                /*path_length: self.path_length.clone(),
-                id: self.id.clone(),
-                tabindex: self.tabindex.clone(),
-                style: self.style.clone(),*/
-                stroke: self.stroke.clone(),
-                stroke_width: self.stroke_width.clone(),
-                fill: self.fill.clone(),*/
-impl Line {
-    fn set_attributes(&mut self, props: LineProps) {
-
-
-        /*let line = self.line.clone().unwrap();
-        //line
-        // set x1
-        let x1_value: Option<String> = get_field_by_name(props.clone(), "x1");
-        match x1_value {
-            Some(x1) => {
-                let _ = line.set_attribute("x1", x1.as_ref());
-            },
-            None => {}
-        }
-
-        let x2_value: Option<String> = get_field_by_name(props.clone(), "x2");
-        match x2_value {
-            Some(x2) => {
-                let _ = line.set_attribute("x2", x2.as_ref());
-            },
-            None => {}
-        }
-
-        let y1_value: Option<String> = get_field_by_name(props.clone(), "y1");
-        match y1_value {
-            Some(y1) => {
-                let _ = line.set_attribute("y1", y1.as_ref());
-            },
-            None => {}
-        }
-
-
-        let y2_value: Option<String> = get_field_by_name(props.clone(), "y2");
-        match y2_value {
-            Some(y2) => {
-                let _ = line.set_attribute("y2", y2.as_ref());
-            },
-            None => {}
-        }
-
-        let stroke_value: Option<String> = get_field_by_name(props.clone(), "stroke");
-        match stroke_value {
-            Some(stroke) => {
-                let _ = line.set_attribute("stroke", stroke.as_ref());
-            },
-            None => {}
-        }
-
-        let stroke_width_value: Option<String> = get_field_by_name(props.clone(), "stroke_width");
-        match stroke_width_value {
-            Some(stroke_width) => {
-                let _ = line.set_attribute("stroke-width", stroke_width.as_ref());
-            },
-            None => {}
-        }
-
-        let fill_value: Option<String> = get_field_by_name(props.clone(), "fill");
-        match fill_value {
-            Some(fill) => {
-                let _ = line.set_attribute("fill", fill.as_ref());
-            },
-            None => {}
         }*/
 
-        
-    }
-}
 
-/*
-markup::define! {
-    LineBasic(
-        x1: Option<String>,
-        x2: Option<String>,
-        y1: Option<String>,
-        y2: Option<String>,
-        /*path_length: Option<String>,
-        id: Option<String>,
-        tabindex: Option<String>,
-        style: Option<String>,*/
-        stroke: Option<String>,
-        stroke_width: Option<String>,
-        fill: Option<String>,
-    )
-    {
-        line [
-                x1 = x1,
-                x2 = x2,
-                y1 = y1,
-                y2 = y2,
-                /*pathLength = path_length,
-                id = id,
-                tabindex = tabindex,
-                style = style,*/
-                stroke = stroke,
-                stroke_width = match stroke_width {
-                    Some(data) => { Some(data)},
-                    None => None
-                },
-                fill = match fill {
-                    Some(data) => { Some(data)},
-                    None => None
-                },
-            ] {}
+        line_tag
+
     }
 }
-*/

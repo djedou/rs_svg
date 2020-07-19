@@ -2,9 +2,6 @@ pub mod line;
 pub mod line_attributes;
 
 pub use line::{
-    Line
+    SvgLine
 };
 
-/*pub use line_attributes::{
-    LineProps
-};*/
