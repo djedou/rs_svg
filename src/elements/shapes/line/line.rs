@@ -218,17 +218,17 @@ markup::define! {
     )
     {
         line [
-                x1 = Some(x1),
-                x2 = Some(x2),
-                y1 = Some(y1),
-                y2 = Some(y2),
-                pathLength = Some(path_length),
-                id = Some(id),
-                tabindex = Some(tabindex),
-                style = Some(style),
-                stroke = Some(stroke),
-                stroke_width = Some(stroke_width),
-                fill = Some(fill)
+                x1 = x1,
+                x2 = x2,
+                y1 = y1,
+                y2 = y2,
+                pathLength = path_length,
+                id = id,
+                tabindex = tabindex,
+                style = style,
+                stroke = stroke,
+                stroke_width = stroke_width,
+                fill = fill
             ] {}
     }
 }
