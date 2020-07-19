@@ -227,7 +227,10 @@ markup::define! {
                 tabindex = tabindex,
                 style = style,*/
                 stroke = stroke,
-                stroke_width = stroke_width,
+                stroke_width = match stroke_width {
+                    Some(data) => { Some(data)},
+                    None => None
+                },
                 fill = match fill {
                     Some(data) => { Some(data)},
                     None => None
