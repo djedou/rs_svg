@@ -100,7 +100,19 @@ impl Component for Line {
         };*/
      
         html! {
-            LineBasic {x1: self.x1.as_ref()}
+            LineBasic {
+                x1: self.x1.as_ref(),
+                x2: self.x2.as_ref(),
+                y1: self.y1.as_ref(),
+                y2: self.y2.as_ref(),
+                path_length: self.path_length.as_ref(),
+                id: self.id.as_ref(),
+                tabindex: self.tabindex.as_ref(),
+                style: self.style.as_ref(),
+                stroke: self.stroke.as_ref(),
+                stroke_width: self.stroke_width.as_ref(),
+                fill: self.fill.as_ref(),
+            }
         }  
     }
 }
@@ -193,20 +205,30 @@ impl Line {
 markup::define! {
     LineBasic<'a>(
         x1: &'a str,
-        /*x2: String,
-        y1: String,
-        y2: String,*/
+        x2: &'a str,
+        y1: &'a str,
+        y2: &'a str,
+        path_length: &'a str,
+        id: &'a str,
+        tabindex: &'a str,
+        style: &'a str,
+        stroke: &'a str,
+        stroke_width: &'a str,
+        fill: &'a str,
     )
     {
         line [
-                x1 = x1,
-                b = "2",
-                c? = true,
-                d? = false,
-                "e-f" = 3,
-                {"g".to_string() + "-h"} = 4,
-                i = None::<i32>,
-                j = Some(5)
+                x1 = Some(x1),
+                x2 = Some(x2),
+                y1 = Some(y1),
+                y2 = Some(y2),
+                pathLength = Some(path_length),
+                id = Some(id),
+                tabindex = Some(tabindex),
+                style = Some(style),
+                stroke = Some(stroke),
+                stroke_width = Some(stroke_width),
+                fill = Some(fill)
             ] {}
     }
 }
