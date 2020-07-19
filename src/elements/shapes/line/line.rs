@@ -82,14 +82,14 @@ impl Component for SvgLine {
 
         let mut line_tag = html! {<line />};
 
-        if let Some(x1_data) = self.x1.as_ref() {
+        /*if let Some(x1_data) = self.x1.as_ref() {
             if let VNode::VTag(tag) = &mut line_tag {
                 tag.add_attribute("x1", x1_data);
             }
-        }
+        }*/
         // pub fn set_attribute<'a, T: Display>(attr: &Option<T>, tagget: &mut VNode, attr_name: &'a str) {
   
-        /*set_attribute(self.x1.as_ref(), &mut line_tag, "x1");
+        set_attribute(self.x1.as_ref(), &mut line_tag, "x1");
         set_attribute(self.x2.as_ref(), &mut line_tag, "x2");
         set_attribute(self.y1.as_ref(), &mut line_tag, "y1");
         set_attribute(self.y2.as_ref(), &mut line_tag, "y2");
@@ -97,9 +97,9 @@ impl Component for SvgLine {
         set_attribute(self.id.as_ref(), &mut line_tag, "id");
         set_attribute(self.tabindex.as_ref(), &mut line_tag, "tabindex");
         set_attribute(self.style.as_ref(), &mut line_tag, "style");
-        set_attribute(self.class.as_ref(), &mut line_tag, "class");*/
+        set_attribute(self.class.as_ref(), &mut line_tag, "class");
 
-        if let Some(x2_data) = self.x2.as_ref() {
+        /*if let Some(x2_data) = self.x2.as_ref() {
             if let VNode::VTag(tag) = &mut line_tag {
                 tag.add_attribute("x2", x2_data);
             }
@@ -145,7 +145,7 @@ impl Component for SvgLine {
             if let VNode::VTag(tag) = &mut line_tag {
                 tag.add_attribute("class", class_data);
             }
-        }
+        }*/
 
 
         line_tag
