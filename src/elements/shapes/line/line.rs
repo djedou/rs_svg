@@ -100,7 +100,7 @@ impl Component for Line {
         };*/
      
         html! {
-            LineBasic {x1: "25" }
+            LineBasic {x1: self.x1.as_ref()}
         }  
     }
 }
