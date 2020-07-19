@@ -20,16 +20,16 @@ pub struct Line {
     //line: Option<SvgLineElement>,
     //node_ref: NodeRef,
     x1: Option<String>,
-    x2: String,
-    y1: String,
-    y2: String,
-    path_length: String,
-    id: String,
-    tabindex: String,
-    style: String,
-    stroke: String,
-    stroke_width: String,
-    fill: String
+    x2: Option<String>,
+    y1: Option<String>,
+    y2: Option<String>,
+    path_length: Option<String>,
+    id: Option<String>,
+    tabindex: Option<String>,
+    style: Option<String>,
+    stroke: Option<String>,
+    stroke_width: Option<String>,
+    fill: Option<String>
 }
 
 pub enum State {
@@ -102,16 +102,16 @@ impl Component for Line {
         html! {
             LineBasic {
                 x1: self.x1.clone(),
-                /*x2: self.x2.as_ref(),
-                y1: self.y1.as_ref(),
-                y2: self.y2.as_ref(),
-                path_length: self.path_length.as_ref(),
-                id: self.id.as_ref(),
-                tabindex: self.tabindex.as_ref(),
-                style: self.style.as_ref(),
-                stroke: self.stroke.as_ref(),
-                stroke_width: self.stroke_width.as_ref(),
-                fill: self.fill.as_ref(),*/
+                x2: self.x2.clone(),
+                y1: self.y1.clone(),
+                y2: self.y2.clone(),
+                path_length: self.path_length.clone(),
+                id: self.id.clone(),
+                tabindex: self.tabindex.clone(),
+                style: self.style.clone(),
+                stroke: self.stroke.clone(),
+                stroke_width: self.stroke_width.clone(),
+                fill: self.fill.clone(),
             }
         }  
     }
@@ -205,21 +205,21 @@ impl Line {
 markup::define! {
     LineBasic(
         x1: Option<String>,
-        /*x2: &'a str,
-        y1: &'a str,
-        y2: &'a str,
-        path_length: &'a str,
-        id: &'a str,
-        tabindex: &'a str,
-        style: &'a str,
-        stroke: &'a str,
-        stroke_width: &'a str,
-        fill: &'a str,*/
+        x2: Option<String>,
+        y1: Option<String>,
+        y2: Option<String>,
+        path_length: Option<String>,
+        id: Option<String>,
+        tabindex: Option<String>,
+        style: Option<String>,
+        stroke: Option<String>,
+        stroke_width: Option<String>,
+        fill: Option<String>,
     )
     {
         line [
                 x1 = x1,
-                /*x2 = x2,
+                x2 = x2,
                 y1 = y1,
                 y2 = y2,
                 pathLength = path_length,
@@ -228,7 +228,7 @@ markup::define! {
                 style = style,
                 stroke = stroke,
                 stroke_width = stroke_width,
-                fill = fill*/
+                fill = fill
             ] {}
     }
 }
