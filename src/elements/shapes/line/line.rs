@@ -102,7 +102,7 @@ impl Component for Line {
         html! {
             LineBasic {
                 x1: self.x1.clone(),
-                x2: self.x2.clone(),
+                /*x2: self.x2.clone(),
                 y1: self.y1.clone(),
                 y2: self.y2.clone(),
                 path_length: self.path_length.clone(),
@@ -111,7 +111,7 @@ impl Component for Line {
                 style: self.style.clone(),
                 stroke: self.stroke.clone(),
                 stroke_width: self.stroke_width.clone(),
-                fill: self.fill.clone(),
+                fill: self.fill.clone(),*/
             }
         }  
     }
@@ -205,7 +205,7 @@ impl Line {
 markup::define! {
     LineBasic(
         x1: Option<String>,
-        x2: Option<String>,
+        /*x2: Option<String>,
         y1: Option<String>,
         y2: Option<String>,
         path_length: Option<String>,
@@ -214,12 +214,12 @@ markup::define! {
         style: Option<String>,
         stroke: Option<String>,
         stroke_width: Option<String>,
-        fill: Option<String>,
+        fill: Option<String>,*/
     )
     {
         line [
                 x1 = x1,
-                x2 = x2,
+                /*x2 = x2,
                 y1 = y1,
                 y2 = y2,
                 pathLength = path_length,
@@ -228,7 +228,7 @@ markup::define! {
                 style = style,
                 stroke = stroke,
                 stroke_width = stroke_width,
-                fill = fill
+                fill = fill*/
             ] {}
     }
 }
