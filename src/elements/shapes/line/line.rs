@@ -108,9 +108,9 @@ impl Component for Line {
                 /*path_length: self.path_length.clone(),
                 id: self.id.clone(),
                 tabindex: self.tabindex.clone(),
-                style: self.style.clone(),
+                style: self.style.clone(),*/
                 stroke: self.stroke.clone(),
-                stroke_width: self.stroke_width.clone(),
+                /*stroke_width: self.stroke_width.clone(),
                 fill: self.fill.clone(),*/
             }
         }  
@@ -211,9 +211,9 @@ markup::define! {
         /*path_length: Option<String>,
         id: Option<String>,
         tabindex: Option<String>,
-        style: Option<String>,
+        style: Option<String>,*/
         stroke: Option<String>,
-        stroke_width: Option<String>,
+        /*stroke_width: Option<String>,
         fill: Option<String>,*/
     )
     {
@@ -225,9 +225,9 @@ markup::define! {
                 /*pathLength = path_length,
                 id = id,
                 tabindex = tabindex,
-                style = style,
+                style = style,*/
                 stroke = stroke,
-                stroke_width = stroke_width,
+                /*stroke_width = stroke_width,
                 fill = fill*/
             ] {}
     }
