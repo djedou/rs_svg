@@ -92,22 +92,15 @@ impl Component for Line {
 */
 
     fn view(&self) -> Html {
-        let p = LineBasic { 
+        /*let p = LineBasic { 
             x1: self.x1.clone().into(),
             x2: self.x2.clone().into(),
             y1: self.y1.clone().into(),
             y2: self.y2.clone().into(),
-        };
-        print!("{}", p);
+        };*/
+     
         html! {
-            <>
-                /*LineBasic { 
-                    x1: self.x1.clone().into(),
-                    x2: self.x2.clone().into(),
-                    y1: self.y1.clone().into(),
-                    y2: self.y2.clone().into(),
-                }*/
-            </>
+            LineBasic {}
         }  
     }
 }
@@ -199,19 +192,22 @@ impl Line {
 
 markup::define! {
     LineBasic(
-        x1: String,
+        /*x1: String,
         x2: String,
         y1: String,
-        y2: String,
+        y2: String,*/
     )
     {
         line [
-            x1 = x1,
-            x2 = x2,
-            y1 = y1,
-            y2 = y2,
-            
-        ] {}
+                a = 1,
+                b = "2",
+                c? = true,
+                d? = false,
+                "e-f" = 3,
+                {"g".to_string() + "-h"} = 4,
+                i = None::<i32>,
+                j = Some(5)
+            ] {}
     }
 }
 
