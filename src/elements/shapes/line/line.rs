@@ -100,7 +100,7 @@ impl Component for Line {
         };*/
      
         html! {
-            /*LineBasic {
+            LineBasic {
                 x1: self.x1.clone(),
                 x2: self.x2.clone(),
                 y1: self.y1.clone(),
@@ -112,7 +112,7 @@ impl Component for Line {
                 stroke: self.stroke.clone(),
                 stroke_width: self.stroke_width.clone(),
                 fill: self.fill.clone(),
-            }*/
+            }
         }  
     }
 }
