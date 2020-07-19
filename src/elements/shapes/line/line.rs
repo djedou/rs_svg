@@ -107,6 +107,67 @@ impl Component for Line {
                 tag.add_attribute("x2", x2_data);
             }
         }
+
+        if let Some(y1_data) = self.y1.as_ref() {
+            if let VNode::VTag(tag) = &mut line_tag {
+                tag.add_attribute("y1", y1_data);
+            }
+        }
+
+        if let Some(y2_data) = self.y2.as_ref() {
+            if let VNode::VTag(tag) = &mut line_tag {
+                tag.add_attribute("y2", y2_data);
+            }
+        }
+
+        if let Some(path_length_data) = self.path_length.as_ref() {
+            if let VNode::VTag(tag) = &mut line_tag {
+                tag.add_attribute("pathLength", path_length_data);
+            }
+        }
+
+        if let Some(y2_data) = self.y2.as_ref() {
+            if let VNode::VTag(tag) = &mut line_tag {
+                tag.add_attribute("y2", y2_data);
+            }
+        }
+
+        if let Some(id_data) = self.id.as_ref() {
+            if let VNode::VTag(tag) = &mut line_tag {
+                tag.add_attribute("id", id_data);
+            }
+        }
+
+        if let Some(tabindex_data) = self.tabindex.as_ref() {
+            if let VNode::VTag(tag) = &mut line_tag {
+                tag.add_attribute("tabindex", tabindex_data);
+            }
+        }
+
+        if let Some(style_data) = self.style.as_ref() {
+            if let VNode::VTag(tag) = &mut line_tag {
+                tag.add_attribute("style", style_data);
+            }
+        }
+
+        if let Some(stroke_data) = self.stroke.as_ref() {
+            if let VNode::VTag(tag) = &mut line_tag {
+                tag.add_attribute("stroke", stroke_data);
+            }
+        }
+
+        if let Some(stroke_width_data) = self.stroke_width.as_ref() {
+            if let VNode::VTag(tag) = &mut line_tag {
+                tag.add_attribute("stroke-width", stroke_width_data);
+            }
+        }
+
+        if let Some(fill_data) = self.fill.as_ref() {
+            if let VNode::VTag(tag) = &mut line_tag {
+                tag.add_attribute("fill", fill_data);
+            }
+        }
+
         line_tag
         /*html! {
             
