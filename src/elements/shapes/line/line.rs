@@ -17,8 +17,19 @@ use web_sys::{SvgElement, SvgTextElement, SvggElement, SvgLineElement};
 /// id, tabindex, style
 pub struct Line {
     //link: ComponentLink<Self>,
-    line: Option<SvgLineElement>,
-    node_ref: NodeRef,
+    //line: Option<SvgLineElement>,
+    //node_ref: NodeRef,
+    x1: String,
+    x2: String,
+    y1: String,
+    y2: String,
+    path_length: String,
+    id: String,
+    tabindex: String,
+    style: String,
+    stroke: String,
+    stroke_width: String,
+    fill: String
 }
 
 pub enum State {
@@ -30,10 +41,21 @@ impl Component for Line {
     type State = State;
     type Props = LineProps;
 
-    fn create(_props: Self::Props, _link: ComponentLink<Self>) -> Self {
+    fn create(props: Self::Props, _link: ComponentLink<Self>) -> Self {
         Line {
-            line: None,
-            node_ref: NodeRef::default(),
+            //line: None,
+            //node_ref: NodeRef::default(),
+            x1: props.x1,
+            x2: props.x2,
+            y1: props.y1,
+            y2: props.y2,
+            path_length: props.path_length, 
+            id: props.id,
+            tabindex: props.tabindex,
+            style: props.style,
+            stroke: props.stroke,
+            stroke_width: props.stroke_width,
+            fill: props.fill
         }
     }
 
@@ -47,27 +69,51 @@ impl Component for Line {
     }
 
     fn change(&mut self, props: Self::Props) -> ShouldRender {
-        self.set_attributes(props);
+        self.x1 = props.x1;
+        self.x2 = props.x2;
+        self.y1 = props.y1;
+        self.y2 = props.y2;
+        self.path_length = props.path_length; 
+        self.id = props.id;
+        self.tabindex = props.tabindex;
+        self.style = props.style;
+        self.stroke = props.stroke;
+        self.stroke_width = props.stroke_width;
+        self.fill = props.fill;
+
+
         true
     }
-
+/*
     fn rendered(&mut self, _first_render: bool) {
-        let line = self.node_ref.cast::<SvgLineElement>().unwrap();
+        //let line = self.node_ref.cast::<SvgLineElement>().unwrap();
         self.line = Some(line);
     }
-
+*/
 
     fn view(&self) -> Html {
         html! {
-            <line ref={self.node_ref.clone()} />
-            
+            <line 
+                x1 = self.x1
+                x2 = self.x2
+                y1 = self.y1
+                y2 = self.y2
+                pathLength = self.path_length
+                id = self.id
+                tabindex = self.tabindex
+                style = self.style
+                stroke = self.stroke
+                stroke_width = self.stroke_width
+                fill = self.fill
+            />          
         }
     }
 }
-
+/*
 impl Line {
     fn set_attributes(&mut self, props: LineProps) {
         let line = self.line.clone().unwrap();
+        //line
         // set x1
         let x1_value: Option<String> = get_field_by_name(props.clone(), "x1");
         match x1_value {
@@ -126,4 +172,4 @@ impl Line {
             None => {}
         }
     }
-}
+}*/
