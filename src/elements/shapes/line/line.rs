@@ -100,7 +100,7 @@ impl Component for Line {
         };*/
      
         html! {
-            LineBasic {}
+            LineBasic {x1: "25" }
         }  
     }
 }
@@ -191,15 +191,15 @@ impl Line {
 
 
 markup::define! {
-    LineBasic(
-        /*x1: String,
-        x2: String,
+    LineBasic<'a>(
+        x1: &'a str,
+        /*x2: String,
         y1: String,
         y2: String,*/
     )
     {
         line [
-                a = 1,
+                x1 = x1,
                 b = "2",
                 c? = true,
                 d? = false,
