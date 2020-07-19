@@ -92,29 +92,42 @@ impl Component for Line {
 */
 
     fn view(&self) -> Html {
-        
+        let p = LineBasic { 
+            x1: self.x1.clone().into(),
+            x2: self.x2.clone().into(),
+            y1: self.y1.clone().into(),
+            y2: self.y2.clone().into(),
+        };
+        print!("{}", p);
         html! {
-            LineBasic {}
-            /*<line 
-                x1 = self.x1
-                x2 = self.x2
-                y1 = self.y1
-                y2 = self.y2
-                pathLength = self.path_length
-                id = self.id
-                tabindex = self.tabindex
-                style = self.style
-                stroke = self.stroke
-                stroke_width = self.stroke_width
-                fill = self.fill
-                
-            />*/         
-        }
-
-        
+            <>
+                /*LineBasic { 
+                    x1: self.x1.clone().into(),
+                    x2: self.x2.clone().into(),
+                    y1: self.y1.clone().into(),
+                    y2: self.y2.clone().into(),
+                }*/
+            </>
+        }  
     }
 }
 
+/*
+ /*<line 
+    x1 = self.x1
+    x2 = self.x2
+    y1 = self.y1
+    y2 = self.y2
+    pathLength = self.path_length
+    id = self.id
+    tabindex = self.tabindex
+    style = self.style
+    stroke = self.stroke
+    stroke_width = self.stroke_width
+    fill = self.fill
+                
+            />*/ 
+*/
 impl Line {
     fn set_attributes(&mut self, props: LineProps) {
 
@@ -185,16 +198,31 @@ impl Line {
 
 
 markup::define! {
-    LineBasic {
-        line[
-            a = 1,
-            b = "2",
-            c? = true,
-            d? = false,
-            "e-f" = 3,
-            {"g".to_string() + "-h"} = 4,
-            i = None::<i32>,
-            j = Some(5)
+    LineBasic(
+        x1: String,
+        x2: String,
+        y1: String,
+        y2: String,
+    )
+    {
+        line [
+            x1 = x1,
+            x2 = x2,
+            y1 = y1,
+            y2 = y2,
+            
         ] {}
     }
 }
+
+/*x1 = props.x1,
+            x2 = props.x2,
+            y1 = props.y1,
+            y2 = props.y2,
+            pathLength = props.path_length,
+            id = props.id,
+            tabindex = props.tabindex,
+            style = props.style,
+            stroke = props.stroke,
+            stroke_width = props.stroke_width,
+            fill = props.fill*/

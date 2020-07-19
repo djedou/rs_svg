@@ -48,4 +48,7 @@ pub struct LineProps {
     pub stroke_width: String,
     #[prop_or_default]
     pub fill: String
+
+    // Global Event
+    
 }
