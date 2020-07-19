@@ -41,7 +41,7 @@ pub struct LineProps {
     pub class: Option<String>,
 
     // Presentation Attributes
-    /*pub  clip_path: Option<String>,
+    pub  clip_path: Option<String>,
     #[prop_or_default]
     pub clip_rule: Option<String>,
     #[prop_or_default] 
@@ -91,7 +91,7 @@ pub struct LineProps {
     #[prop_or_default] 
     pub vector_effect: Option<String>,
     #[prop_or_default] 
-    pub visibility: Option<String>,*/
+    pub visibility: Option<String>,
 
     // Global Event
 
