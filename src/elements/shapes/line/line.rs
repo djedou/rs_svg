@@ -132,19 +132,24 @@ impl Component for SvgLine {
 
         self.clip_path = props.clip_path;
         self.clip_rule = props.clip_rule; 
+
         self.color = props.color; 
         self.color_interpolation = props.color_interpolation;
-        self.color_rendering = props.color_rendering; 
+        self.color_rendering = props.color_rendering;
+
         self.cursor = props.cursor; 
         self.display = props.display; 
+
         self.fill = props.fill; 
         self.fill_opacity = props.fill_opacity; 
         self.fill_rule = props.fill_rule; 
+
         self.filter = props.filter; 
         self.mask = props.mask; 
         self.opacity = props.opacity; 
         self.pointer_events = props.pointer_events; 
         self.shape_rendering = props.shape_rendering; 
+
         self.stroke = props.stroke; 
         self.stroke_dasharray = props.stroke_dasharray; 
         self.stroke_dashoffset = props.stroke_dashoffset; 
@@ -153,6 +158,7 @@ impl Component for SvgLine {
         self.stroke_miterlimit = props.stroke_miterlimit; 
         self.stroke_opacity = props.stroke_opacity; 
         self.stroke_width = props.stroke_width; 
+        
         self.transform = props.transform; 
         self.vector_effect = props.vector_effect; 
         self.visibility = props.visibility;
@@ -186,19 +192,24 @@ impl Component for SvgLine {
 
         set_attribute(self.clip_path.as_ref(), &mut line_tag, "clip-path");
         set_attribute(self.clip_rule.as_ref(), &mut line_tag, "clip-rule");
+
         set_attribute(self.color.as_ref(), &mut line_tag, "color");
         set_attribute(self.color_interpolation.as_ref(), &mut line_tag, "color-interpolation");
         set_attribute(self.color_rendering.as_ref(), &mut line_tag, "color-rendering");
+
         set_attribute(self.cursor.as_ref(), &mut line_tag, "cursor");
         set_attribute(self.display.as_ref(), &mut line_tag, "display");
+
         set_attribute(self.fill.as_ref(), &mut line_tag, "fill");
         set_attribute(self.fill_opacity.as_ref(), &mut line_tag, "fill-opacity");
-        set_attribute(self.fill_rule.as_ref(), &mut line_tag, "class");
+        set_attribute(self.fill_rule.as_ref(), &mut line_tag, "fill-rule");
+
         set_attribute(self.filter.as_ref(), &mut line_tag, "filter");
         set_attribute(self.mask.as_ref(), &mut line_tag, "mask");
         set_attribute(self.opacity.as_ref(), &mut line_tag, "opacity");
         set_attribute(self.pointer_events.as_ref(), &mut line_tag, "pointer-events");
         set_attribute(self.shape_rendering.as_ref(), &mut line_tag, "shape-rendering");
+        
         set_attribute(self.stroke.as_ref(), &mut line_tag, "stroke");
         set_attribute(self.stroke_dasharray.as_ref(), &mut line_tag, "stroke-dasharray");
         set_attribute(self.stroke_dashoffset.as_ref(), &mut line_tag, "stroke-dashoffset");
@@ -207,6 +218,7 @@ impl Component for SvgLine {
         set_attribute(self.stroke_miterlimit.as_ref(), &mut line_tag, "stroke-miterlimit");
         set_attribute(self.stroke_opacity.as_ref(), &mut line_tag, "stroke-opacity");
         set_attribute(self.stroke_width.as_ref(), &mut line_tag, "stroke-width");
+
         set_attribute(self.transform.as_ref(), &mut line_tag, "transform");
         set_attribute(self.vector_effect.as_ref(), &mut line_tag, "vector-effect");
         set_attribute(self.visibility.as_ref(), &mut line_tag, "visibility");

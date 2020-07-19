@@ -41,7 +41,8 @@ pub struct LineProps {
     pub class: Option<String>,
 
     // Presentation Attributes
-    pub  clip_path: Option<String>,
+    #[prop_or_default]
+    pub clip_path: Option<String>,
     #[prop_or_default]
     pub clip_rule: Option<String>,
     #[prop_or_default] 
