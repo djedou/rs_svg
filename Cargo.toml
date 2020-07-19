@@ -12,6 +12,7 @@ djed = {git = "https://github.com/djedou/djed"}
 js-sys = "0.3"
 serde = { version = "1.0", features = ["derive"] }
 serde-value = "0.7"
+markup = "0.4.1"
 
 [dependencies.web-sys]
 version = "0.3.4"

@@ -92,8 +92,10 @@ impl Component for Line {
 */
 
     fn view(&self) -> Html {
+        
         html! {
-            <line 
+            LineBasic {}
+            /*<line 
                 x1 = self.x1
                 x2 = self.x2
                 y1 = self.y1
@@ -106,14 +108,18 @@ impl Component for Line {
                 stroke_width = self.stroke_width
                 fill = self.fill
                 
-            />         
+            />*/         
         }
+
+        
     }
 }
-/*
+
 impl Line {
     fn set_attributes(&mut self, props: LineProps) {
-        let line = self.line.clone().unwrap();
+
+
+        /*let line = self.line.clone().unwrap();
         //line
         // set x1
         let x1_value: Option<String> = get_field_by_name(props.clone(), "x1");
@@ -171,6 +177,24 @@ impl Line {
                 let _ = line.set_attribute("fill", fill.as_ref());
             },
             None => {}
-        }
+        }*/
+
+        
     }
-}*/
+}
+
+
+markup::define! {
+    LineBasic {
+        line[
+            a = 1,
+            b = "2",
+            c? = true,
+            d? = false,
+            "e-f" = 3,
+            {"g".to_string() + "-h"} = 4,
+            i = None::<i32>,
+            j = Some(5)
+        ] {}
+    }
+}
