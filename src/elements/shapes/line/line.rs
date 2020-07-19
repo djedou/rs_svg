@@ -111,7 +111,7 @@ impl Component for Line {
                 style: self.style.clone(),*/
                 stroke: self.stroke.clone(),
                 stroke_width: self.stroke_width.clone(),
-                //fill: self.fill.clone(),
+                fill: self.fill.clone(),
             }
         }  
     }
@@ -214,7 +214,7 @@ markup::define! {
         style: Option<String>,*/
         stroke: Option<String>,
         stroke_width: Option<String>,
-        //fill: Option<String>,
+        fill: Option<String>,
     )
     {
         line [
@@ -228,7 +228,7 @@ markup::define! {
                 style = style,*/
                 stroke = stroke,
                 stroke_width = stroke_width,
-                //fill = fill
+                fill = fill,
             ] {}
     }
 }
