@@ -110,8 +110,8 @@ impl Component for Line {
                 tabindex: self.tabindex.clone(),
                 style: self.style.clone(),*/
                 stroke: self.stroke.clone(),
-                /*stroke_width: self.stroke_width.clone(),
-                fill: self.fill.clone(),*/
+                /*stroke_width: self.stroke_width.clone(),*/
+                fill: self.fill.clone(),
             }
         }  
     }
@@ -213,8 +213,8 @@ markup::define! {
         tabindex: Option<String>,
         style: Option<String>,*/
         stroke: Option<String>,
-        /*stroke_width: Option<String>,
-        fill: Option<String>,*/
+        /*stroke_width: Option<String>,*/
+        fill: Option<String>,
     )
     {
         line [
@@ -227,8 +227,8 @@ markup::define! {
                 tabindex = tabindex,
                 style = style,*/
                 stroke = stroke,
-                /*stroke_width = stroke_width,
-                fill = fill*/
+                /*stroke_width = stroke_width,*/
+                fill = fill
             ] {}
     }
 }
