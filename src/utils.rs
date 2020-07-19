@@ -5,7 +5,7 @@ use djed::{
 
 use std::fmt::Display;
 
-pub fn set_attribute<'a, T: Display>(attr: &Option<T>, tagget: &mut VNode, attr_name: &'a str) {
+pub fn set_attribute<'a, T: Display>(attr: Option<&T>, tagget: &mut VNode, attr_name: &'a str) {
 
     if let Some(data) = attr {
         if let VNode::VTag(tag) = tagget {

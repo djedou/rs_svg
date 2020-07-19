@@ -88,16 +88,16 @@ impl Component for SvgLine {
             }
         }*/
         // pub fn set_attribute<'a, T: Display>(attr: &Option<T>, tagget: &mut VNode, attr_name: &'a str) {
-
-        set_attribute::<String>(&self.x1, &mut line_tag, "x1");
-        set_attribute::<String>(&self.x2, &mut line_tag, "x2");
-        set_attribute::<String>(&self.y1, &mut line_tag, "y1");
-        set_attribute::<String>(&self.y2, &mut line_tag, "y2");
-        set_attribute::<String>(&self.path_length, &mut line_tag, "pathLength");
-        set_attribute::<String>(&self.id, &mut line_tag, "id");
-        set_attribute::<String>(&self.tabindex, &mut line_tag, "tabindex");
-        set_attribute::<String>(&self.style, &mut line_tag, "style");
-        set_attribute::<String>(&self.class, &mut line_tag, "class");
+  
+        set_attribute::<String>(self.x1.as_ref(), &mut line_tag, "x1");
+        set_attribute::<String>(self.x2.as_ref(), &mut line_tag, "x2");
+        set_attribute::<String>(self.y1.as_ref(), &mut line_tag, "y1");
+        set_attribute::<String>(self.y2.as_ref(), &mut line_tag, "y2");
+        set_attribute::<String>(self.path_length.as_ref(), &mut line_tag, "pathLength");
+        set_attribute::<String>(self.id.as_ref(), &mut line_tag, "id");
+        set_attribute::<String>(self.tabindex.as_ref(), &mut line_tag, "tabindex");
+        set_attribute::<String>(self.style.as_ref(), &mut line_tag, "style");
+        set_attribute::<String>(self.class.as_ref(), &mut line_tag, "class");
 
         /*if let Some(x2_data) = self.x2.as_ref() {
             if let VNode::VTag(tag) = &mut line_tag {
