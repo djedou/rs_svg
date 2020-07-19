@@ -141,11 +141,11 @@ impl Component for SvgLine {
             }
         }
 
-        /*if let Some(class_data) = self.class.as_ref() {
+        if let Some(class_data) = self.class.as_ref() {
             if let VNode::VTag(tag) = &mut line_tag {
                 tag.add_attribute("class", class_data);
             }
-        }*/
+        }
 
 
         line_tag
