@@ -102,8 +102,8 @@ impl Component for Line {
         html! {
             LineBasic {
                 x1: self.x1.clone(),
-                /*x2: self.x2.clone(),
-                y1: self.y1.clone(),
+                x2: self.x2.clone(),
+                /*y1: self.y1.clone(),
                 y2: self.y2.clone(),
                 path_length: self.path_length.clone(),
                 id: self.id.clone(),
@@ -205,8 +205,8 @@ impl Line {
 markup::define! {
     LineBasic(
         x1: Option<String>,
-        /*x2: Option<String>,
-        y1: Option<String>,
+        x2: Option<String>,
+        /*y1: Option<String>,
         y2: Option<String>,
         path_length: Option<String>,
         id: Option<String>,
@@ -219,8 +219,8 @@ markup::define! {
     {
         line [
                 x1 = x1,
-                /*x2 = x2,
-                y1 = y1,
+                x2 = x2,
+                /*y1 = y1,
                 y2 = y2,
                 pathLength = path_length,
                 id = id,
