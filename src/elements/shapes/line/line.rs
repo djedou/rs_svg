@@ -105,7 +105,8 @@ impl Component for Line {
                 stroke = self.stroke
                 stroke_width = self.stroke_width
                 fill = self.fill
-            />          
+                
+            />         
         }
     }
 }
