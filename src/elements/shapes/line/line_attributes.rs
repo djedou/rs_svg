@@ -45,22 +45,26 @@ pub struct LineProps {
     pub clip_path: Option<String>,
     #[prop_or_default]
     pub clip_rule: Option<String>,
+
     #[prop_or_default] 
     pub color: Option<String>,
     #[prop_or_default] 
     pub color_interpolation: Option<String>,
     #[prop_or_default] 
     pub color_rendering: Option<String>,
+
     #[prop_or_default] 
     pub cursor: Option<String>,
     #[prop_or_default] 
     pub display: Option<String>,
+
     #[prop_or_default] 
     pub fill: Option<String>,
     #[prop_or_default] 
     pub fill_opacity: Option<String>,
     #[prop_or_default] 
     pub fill_rule: Option<String>,
+    
     #[prop_or_default] 
     pub filter: Option<String>,
     #[prop_or_default] 
