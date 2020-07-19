@@ -1,6 +1,7 @@
 use djed::{
     html, 
     djed::{Component, ComponentLink, Html,NodeRef, ShouldRender},
+    djed_dom::{VNode},
     //callback::Callback,
     //macros::Properties
 };
@@ -92,15 +93,43 @@ impl Component for Line {
 */
 
     fn view(&self) -> Html {
-        /*let p = LineBasic { 
-            x1: self.x1.clone().into(),
-            x2: self.x2.clone().into(),
-            y1: self.y1.clone().into(),
-            y2: self.y2.clone().into(),
-        };*/
-     
-        html! {
-            LineBasic {
+
+        let mut line_tag = html! {<line />};
+
+        if let Some(x1_data) = self.x1.as_ref() {
+            if let VNode::VTag(tag) = &mut line_tag {
+                tag.add_attribute("x1", x1_data);
+            }
+        }
+
+        if let Some(x2_data) = self.x2.as_ref() {
+            if let VNode::VTag(tag) = &mut line_tag {
+                tag.add_attribute("x2", x2_data);
+            }
+        }
+        line_tag
+        /*html! {
+            
+            
+            <line
+                x1 = self.x1
+                x2 = self.x2
+                y1 = self.y1
+                y2 = self.y2
+                pathLength = self.path_length
+                id = self.id
+                tabindex = self.tabindex
+                style = self.style
+                stroke = self.stroke
+                stroke_width = self.stroke_width
+                fill = self.fill
+            />
+            
+        }*/ 
+    }
+}
+
+/*LineBasic {
                 x1: self.x1.clone(),
                 x2: self.x2.clone(),
                 y1: self.y1.clone(),
@@ -111,28 +140,7 @@ impl Component for Line {
                 style: self.style.clone(),*/
                 stroke: self.stroke.clone(),
                 stroke_width: self.stroke_width.clone(),
-                fill: self.fill.clone(),
-            }
-        }  
-    }
-}
-
-/*
- /*<line 
-    x1 = self.x1
-    x2 = self.x2
-    y1 = self.y1
-    y2 = self.y2
-    pathLength = self.path_length
-    id = self.id
-    tabindex = self.tabindex
-    style = self.style
-    stroke = self.stroke
-    stroke_width = self.stroke_width
-    fill = self.fill
-                
-            />*/ 
-*/
+                fill: self.fill.clone(),*/
 impl Line {
     fn set_attributes(&mut self, props: LineProps) {
 
@@ -201,7 +209,7 @@ impl Line {
     }
 }
 
-
+/*
 markup::define! {
     LineBasic(
         x1: Option<String>,
@@ -238,15 +246,4 @@ markup::define! {
             ] {}
     }
 }
-
-/*x1 = props.x1,
-            x2 = props.x2,
-            y1 = props.y1,
-            y2 = props.y2,
-            pathLength = props.path_length,
-            id = props.id,
-            tabindex = props.tabindex,
-            style = props.style,
-            stroke = props.stroke,
-            stroke_width = props.stroke_width,
-            fill = props.fill*/
+*/
