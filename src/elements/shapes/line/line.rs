@@ -99,7 +99,7 @@ impl Component for Line {
             y2: self.y2.clone().into(),
         };*/
      
-        html! {
+        html! {{
             LineBasic {
                 x1: self.x1.as_ref(),
                 x2: self.x2.as_ref(),
@@ -113,7 +113,7 @@ impl Component for Line {
                 stroke_width: self.stroke_width.as_ref(),
                 fill: self.fill.as_ref(),
             }
-        }  
+    }}  
     }
 }
 
