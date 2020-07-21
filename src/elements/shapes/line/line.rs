@@ -495,9 +495,9 @@ impl Component for SvgLine {
             State::Onchange => {
                 self.onchange.emit(());
             }, 
-            /*State::Onclick => {
+            State::Onclick => {
                 self.onclick.emit(MouseEvent);
-            }, */
+            }, 
             State::Onclose => {
                 self.onclose.emit(());
             }, 
