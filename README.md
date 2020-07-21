@@ -1,2 +1,2 @@
 # rs_svg
-svg components in rust
+svg components builded with djed for Rust and WebAssembly 
