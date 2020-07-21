@@ -186,7 +186,7 @@ pub struct SvgLine {
 
 pub enum State {
     // Animation Event
-    Onbegin, 
+    /*Onbegin, 
     Onend, 
     Onrepeat,
 
@@ -261,7 +261,7 @@ pub enum State {
     // Graphical Event 
     Onactivate, 
     Onfocusin, 
-    Onfocusout, 
+    Onfocusout, */
 }
 
 
