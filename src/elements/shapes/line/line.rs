@@ -3,6 +3,7 @@ use djed::{
     djed::{Component, ComponentLink, Html, ShouldRender},
     callback::Callback,
     djed::listener::{*},
+    callback::Callback,
 };
 
 use std::rc::Rc;
@@ -102,166 +103,89 @@ pub struct SvgLine {
     aria_valuenow: Option<String>,
     aria_valuetext: Option<String>,
     role: Option<String>,
-/*
 
     // Animation Event
-    pub onbegin: Callback<()>, 
-    pub onend: Callback<()>, 
-    pub onrepeat: Callback<()>,
+    onbegin: Option<Callback<MouseEvent>>,
+    onend: Option<Callback<MouseEvent>>, 
+    onrepeat: Option<Callback<MouseEvent>>,
 
     // Document Event
-    pub onabort: Callback<()>,
-    pub onerror: Callback<()>,
-    pub onresize: Callback<()>,
-    pub onscroll: Callback<()>,
-    pub onunload: Callback<()>,
+    onabort: Option<Callback<MouseEvent>>,
+    onerror: Option<Callback<MouseEvent>>,
+    onresize: Option<Callback<MouseEvent>>,
+    onscroll: Option<Callback<MouseEvent>>,
+    onunload: Option<Callback<MouseEvent>>,
 
     // Document Element Event 
-    pub oncopy: Callback<()>, 
-    pub oncut: Callback<()>, 
-    pub onpaste: Callback<()>,
+    oncopy: Option<Callback<MouseEvent>>, 
+    oncut: Option<Callback<MouseEvent>>, 
+    onpaste: Option<Callback<MouseEvent>>,
 
     // Global Event
-    pub oncancel: Callback<()>, 
-    pub oncanplay: Callback<()>, 
-    pub oncanplaythrough: Callback<()>, 
-    pub onchange: Callback<()>, */
-    pub onclick: Option<Callback<MouseEvent>>, 
-    /*pub onclose: Callback<()>, 
-    pub oncuechange: Callback<()>, 
-    pub ondblclick: Callback<()>, 
-    pub ondrag: Callback<()>, 
-    pub ondragend: Callback<()>, 
-    pub ondragenter: Callback<()>, 
-    pub ondragexit: Callback<()>, 
-    pub ondragleave: Callback<()>, 
-    pub ondragover: Callback<()>, 
-    pub ondragstart: Callback<()>, 
-    pub ondrop: Callback<()>, 
-    pub ondurationchange: Callback<()>, 
-    pub onemptied: Callback<()>, 
-    pub onended: Callback<()>, 
-    pub onfocus: Callback<()>, 
-    pub oninput: Callback<()>, 
-    pub oninvalid: Callback<()>, 
-    pub onkeydown: Callback<()>, 
-    pub onkeypress: Callback<()>, 
-    pub onkeyup: Callback<()>, 
-    pub onload: Callback<()>, 
-    pub onloadeddata: Callback<()>, 
-    pub onloadedmetadata: Callback<()>, 
-    pub onloadstart: Callback<()>, 
-    pub onmousedown: Callback<()>, 
-    pub onmouseenter: Callback<()>, 
-    pub onmouseleave: Callback<()>, 
-    pub onmousemove: Callback<()>, 
-    pub onmouseout: Callback<()>, 
-    pub onmouseover: Callback<()>, 
-    pub onmouseup: Callback<()>, 
-    pub onmousewheel: Callback<()>, 
-    pub onpause: Callback<()>, 
-    pub onplay: Callback<()>, 
-    pub onplaying: Callback<()>, 
-    pub onprogress: Callback<()>, 
-    pub onratechange: Callback<()>, 
-    pub onreset: Callback<()>,   
-    pub onseeked: Callback<()>, 
-    pub onseeking: Callback<()>, 
-    pub onselect: Callback<()>, 
-    pub onshow: Callback<()>, 
-    pub onstalled: Callback<()>, 
-    pub onsubmit: Callback<()>, 
-    pub onsuspend: Callback<()>, 
-    pub ontimeupdate: Callback<()>, 
-    pub ontoggle: Callback<()>, 
-    pub onvolumechange: Callback<()>, 
-    pub onwaiting: Callback<()>, 
+    oncancel: Option<Callback<MouseEvent>>, 
+    oncanplay: Option<Callback<MouseEvent>>, 
+    oncanplaythrough: Option<Callback<MouseEvent>>, 
+    onchange: Option<Callback<MouseEvent>>,
+    onclick: Option<Callback<MouseEvent>>, 
+    onclose: Option<Callback<MouseEvent>>,
+    oncuechange: Option<Callback<MouseEvent>>,
+    ondblclick: Option<Callback<MouseEvent>>,
+    ondrag: Option<Callback<MouseEvent>>,
+    ondragend: Option<Callback<MouseEvent>>,
+    ondragenter: Option<Callback<MouseEvent>>,
+    ondragexit: Option<Callback<MouseEvent>>,
+    ondragleave: Option<Callback<MouseEvent>>,
+    ondragover: Option<Callback<MouseEvent>>,
+    ondragstart: Option<Callback<MouseEvent>>,
+    ondrop: Option<Callback<MouseEvent>>,
+    ondurationchange: Option<Callback<MouseEvent>>,
+    onemptied: Option<Callback<MouseEvent>>,
+    onended: Option<Callback<MouseEvent>>,
+    onfocus: Option<Callback<MouseEvent>>,
+    oninput: Option<Callback<MouseEvent>>,
+    oninvalid: Option<Callback<MouseEvent>>,
+    onkeydown: Option<Callback<MouseEvent>>,
+    onkeypress: Option<Callback<MouseEvent>>,
+    onkeyup: Option<Callback<MouseEvent>>,
+    onload: Option<Callback<MouseEvent>>,
+    onloadeddata: Option<Callback<MouseEvent>>,
+    onloadedmetadata: Option<Callback<MouseEvent>>,
+    onloadstart: Option<Callback<MouseEvent>>,
+    onmousedown: Option<Callback<MouseEvent>>,
+    onmouseenter: Option<Callback<MouseEvent>>,
+    onmouseleave: Option<Callback<MouseEvent>>,
+    onmousemove: Option<Callback<MouseEvent>>,
+    onmouseout: Option<Callback<MouseEvent>>,
+    onmouseover: Option<Callback<MouseEvent>>,
+    onmouseup: Option<Callback<MouseEvent>>,
+    onmousewheel: Option<Callback<MouseEvent>>,
+    onpause: Option<Callback<MouseEvent>>,
+    onplay: Option<Callback<MouseEvent>>,
+    onplaying: Option<Callback<MouseEvent>>,
+    onprogress: Option<Callback<MouseEvent>>,
+    onratechange: Option<Callback<MouseEvent>>,
+    onreset: Option<Callback<MouseEvent>>,
+    onseeked: Option<Callback<MouseEvent>>,
+    onseeking: Option<Callback<MouseEvent>>,
+    onselect: Option<Callback<MouseEvent>>,
+    onshow: Option<Callback<MouseEvent>>,
+    onstalled: Option<Callback<MouseEvent>>,
+    onsubmit: Option<Callback<MouseEvent>>,
+    onsuspend: Option<Callback<MouseEvent>>,
+    ontimeupdate: Option<Callback<MouseEvent>>,
+    ontoggle: Option<Callback<MouseEvent>>,
+    onvolumechange: Option<Callback<MouseEvent>>,
+    onwaiting: Option<Callback<MouseEvent>>, 
 
     // Graphical Event 
-    pub onactivate: Callback<()>, 
-    pub onfocusin: Callback<()>, 
-    pub onfocusout: Callback<()>, */
+    onactivate: Option<Callback<MouseEvent>>,
+    onfocusin: Option<Callback<MouseEvent>>,
+    onfocusout: Option<Callback<MouseEvent>>,
 
 }
 
 pub enum State {
-    // Animation Event
-    /*Onbegin, 
-    Onend, 
-    Onrepeat,
 
-    // Document Event
-    Onabort,
-    Onerror,
-    Onresize,
-    Onscroll,
-    Onunload,
-
-    // Document Element Event 
-    Oncopy, 
-    Oncut, 
-    Onpaste,
-
-    // Global Event
-    Oncancel, 
-    Oncanplay, 
-    Oncanplaythrough, 
-    Onchange, 
-    Onclick, 
-    Onclose, 
-    Oncuechange, 
-    Ondblclick, 
-    Ondrag, 
-    Ondragend, 
-    Ondragenter, 
-    Ondragexit, 
-    Ondragleave, 
-    Ondragover, 
-    Ondragstart, 
-    Ondrop, 
-    Ondurationchange, 
-    Onemptied, 
-    Onended, 
-    Onfocus, 
-    Oninput, 
-    Oninvalid, 
-    Onkeydown, 
-    Onkeypress, 
-    Onkeyup, 
-    Onload, 
-    Onloadeddata, 
-    Onloadedmetadata, 
-    Onloadstart, 
-    Onmousedown, 
-    Onmouseenter, 
-    Onmouseleave, 
-    Onmousemove, 
-    Onmouseout, 
-    Onmouseover, 
-    Onmouseup, 
-    Onmousewheel, 
-    Onpause, 
-    Onplay, 
-    Onplaying, 
-    Onprogress, 
-    Onratechange, 
-    Onreset,   
-    Onseeked, 
-    Onseeking, 
-    Onselect, 
-    Onshow, 
-    Onstalled, 
-    Onsubmit, 
-    Onsuspend, 
-    Ontimeupdate, 
-    Ontoggle, 
-    Onvolumechange, 
-    Onwaiting, 
-
-    // Graphical Event 
-    Onactivate, 
-    Onfocusin, 
-    Onfocusout, */
 }
 
 
@@ -360,303 +284,15 @@ impl Component for SvgLine {
             aria_valuenow: props.aria_valuenow,
             aria_valuetext: props.aria_valuetext,
             role: props.role,
-            /*
-            // Animation Event
-            onbegin: props.onbegin, 
-            onend: props.onend, 
-            onrepeat: props.onrepeat,
 
-            // Document Event
-            onabort: props.onabort,
-            onerror: props.onerror,
-            onresize: props.onresize,
-            onscroll: props.onscroll,
-            onunload: props.onunload,
 
-            // Document Element Event 
-            oncopy: props.oncopy, 
-            oncut: props.oncut, 
-            onpaste: props.onpaste,
-
-            // Global Event
-            oncancel: props.oncancel, 
-            oncanplay: props.oncanplay, 
-            oncanplaythrough: props.oncanplaythrough, 
-            onchange: props.onchange, */
             onclick: props.onclick, 
-            /*onclose: props.onclose, 
-            oncuechange: props.oncuechange, 
-            ondblclick: props.ondblclick, 
-            ondrag: props.ondrag, 
-            ondragend: props.ondragend, 
-            ondragenter: props.ondragenter, 
-            ondragexit: props.ondragexit, 
-            ondragleave: props.ondragleave, 
-            ondragover: props.ondragover, 
-            ondragstart: props.ondragstart, 
-            ondrop: props.ondrop, 
-            ondurationchange: props.ondurationchange, 
-            onemptied: props.onemptied, 
-            onended: props.onended, 
-            onfocus: props.onfocus, 
-            oninput: props.oninput, 
-            oninvalid: props.oninvalid, 
-            onkeydown: props.onkeydown, 
-            onkeypress: props.onkeypress, 
-            onkeyup: props.onkeyup, 
-            onload: props.onload, 
-            onloadeddata: props.onloadeddata, 
-            onloadedmetadata: props.onloadedmetadata, 
-            onloadstart: props.onloadstart, 
-            onmousedown: props.onmousedown, 
-            onmouseenter: props.onmouseenter, 
-            onmouseleave: props.onmouseleave, 
-            onmousemove: props.onmousemove, 
-            onmouseout: props.onmouseout, 
-            onmouseover: props.onmouseover, 
-            onmouseup: props.onmouseup, 
-            onmousewheel: props.onmousewheel, 
-            onpause: props.onpause, 
-            onplay: props.onplay, 
-            onplaying: props.onplaying, 
-            onprogress: props.onprogress, 
-            onratechange: props.onratechange, 
-            onreset: props.onreset,   
-            onseeked: props.onseeked, 
-            onseeking: props.onseeking, 
-            onselect: props.onselect, 
-            onshow: props.onshow, 
-            onstalled: props.onstalled, 
-            onsubmit: props.onsubmit, 
-            onsuspend: props.onsuspend, 
-            ontimeupdate: props.ontimeupdate, 
-            ontoggle: props.ontoggle, 
-            onvolumechange: props.onvolumechange, 
-            onwaiting: props.onwaiting, 
-
-            // Graphical Event 
-            onactivate: props.onactivate, 
-            onfocusin: props.onfocusin, 
-            onfocusout: props.onfocusout, */
+            
         }
     }
 
     fn update(&mut self, _state: Self::State) -> ShouldRender {
-        /*match state {
-            // Animation Event
-            State::Onbegin => {
-                self.onbegin.emit(());
-            }, 
-            State::Onend => {
-                self.onend.emit(());
-            }, 
-            State::Onrepeat => {
-                self.onrepeat.emit(());
-            },
-
-            // Document Event
-            State::Onabort => {
-                self.onabort.emit(());
-            },
-            State::Onerror => {
-                self.onerror.emit(());
-            },
-            State::Onresize => {
-                self.onresize.emit(());
-            },
-            State::Onscroll => {
-                self.onscroll.emit(());
-            },
-            State::Onunload => {
-                self.onunload.emit(());
-            },
-
-            // Document Element Event 
-            State::Oncopy => {
-                self.oncopy.emit(());
-            }, 
-            State::Oncut => {
-                self.oncut.emit(());
-            }, 
-            State::Onpaste => {
-                self.onpaste.emit(());
-            },
-
-            // Global Event
-            State::Oncancel => {
-                self.oncancel.emit(());
-            }, 
-            State::Oncanplay => {
-                self.oncanplay.emit(());
-            }, 
-            State::Oncanplaythrough => {
-                self.oncanplaythrough.emit(());
-            }, 
-            State::Onchange => {
-                self.onchange.emit(());
-            }, 
-            State::Onclick => {
-                self.onclick.emit(MouseEvent);
-            }, 
-            State::Onclose => {
-                self.onclose.emit(());
-            }, 
-            State::Oncuechange => {
-                self.oncuechange.emit(());
-            }, 
-            State::Ondblclick => {
-                self.ondblclick.emit(());
-            }, 
-            State::Ondrag => {
-                self.ondrag.emit(());
-            }, 
-            State::Ondragend => {
-                self.ondragend.emit(());
-            }, 
-            State::Ondragenter => {
-                self.ondragenter.emit(());
-            }, 
-            State::Ondragexit => {
-                self.ondragexit.emit(());
-            }, 
-            State::Ondragleave => {
-                self.ondragleave.emit(());
-            }, 
-            State::Ondragover => {
-                self.ondragover.emit(());
-            }, 
-            State::Ondragstart => {
-                self.ondragstart.emit(());
-            }, 
-            State::Ondrop => {
-                self.ondrop.emit(());
-            }, 
-            State::Ondurationchange => {
-                self.ondurationchange.emit(());
-            }, 
-            State::Onemptied => {
-                self.onemptied.emit(());
-            }, 
-            State::Onended => {
-                self.onended.emit(());
-            }, 
-            State::Onfocus => {
-                self.onfocus.emit(());
-            }, 
-            State::Oninput => {
-                self.oninput.emit(());
-            }, 
-            State::Oninvalid => {
-                self.oninvalid.emit(());
-            }, 
-            State::Onkeydown => {
-                self.onkeydown.emit(());
-            }, 
-            State::Onkeypress => {
-                self.onkeypress.emit(());
-            }, 
-            State::Onkeyup => {
-                self.onkeyup.emit(());
-            }, 
-            State::Onload => {
-                self.onload.emit(());
-            }, 
-            State::Onloadeddata => {
-                self.onloadeddata.emit(());
-            }, 
-            State::Onloadedmetadata => {
-                self.onloadedmetadata.emit(());
-            }, 
-            State::Onloadstart => {
-                self.onloadstart.emit(());
-            }, 
-            State::Onmousedown => {
-                self.onmousedown.emit(());
-            }, 
-            State::Onmouseenter => {
-                self.onmouseenter.emit(());
-            }, 
-            State::Onmouseleave => {
-                self.onmouseleave.emit(());
-            }, 
-            State::Onmousemove => {
-                self.onmousemove.emit(());
-            }, 
-            State::Onmouseout => {
-                self.onmouseout.emit(());
-            }, 
-            State::Onmouseover => {
-                self.onmouseover.emit(());
-            }, 
-            State::Onmouseup => {
-                self.onmouseup.emit(());
-            }, 
-            State::Onmousewheel => {
-                self.onmousewheel.emit(());
-            }, 
-            State::Onpause => {
-                self.onpause.emit(());
-            }, 
-            State::Onplay => {
-                self.onplay.emit(());
-            }, 
-            State::Onplaying => {
-                self.onplaying.emit(());
-            }, 
-            State::Onprogress => {
-                self.onprogress.emit(());
-            }, 
-            State::Onratechange => {
-                self.onratechange.emit(());
-            }, 
-            State::Onreset => {
-                self.onreset.emit(());
-            },   
-            State::Onseeked => {
-                self.onseeked.emit(());
-            }, 
-            State::Onseeking => {
-                self.onseeking.emit(());
-            }, 
-            State::Onselect => {
-                self.onselect.emit(());
-            }, 
-            State::Onshow => {
-                self.onshow.emit(());
-            }, 
-            State::Onstalled => {
-               self.onstalled.emit(());
-            }, 
-            State::Onsubmit => {
-                self.onsubmit.emit(());
-            }, 
-            State::Onsuspend => {
-                self.onsuspend.emit(());
-            }, 
-            State::Ontimeupdate => {
-                self.ontimeupdate.emit(());
-            }, 
-            State::Ontoggle => {
-                self.ontoggle.emit(());
-            }, 
-            State::Onvolumechange => {
-               self.onvolumechange.emit(());
-            }, 
-            State::Onwaiting => {
-                self.onwaiting.emit(());
-            }, 
-
-            // Graphical Event 
-            State::Onactivate => {
-                self.onactivate.emit(());
-            }, 
-            State::Onfocusin => {
-                self.onfocusin.emit(());
-            }, 
-            State::Onfocusout => {
-                self.onfocusout.emit(());
-            },
-        }*/
+        
         false
     }
 

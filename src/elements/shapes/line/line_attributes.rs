@@ -200,83 +200,150 @@ pub struct LineProps {
     #[prop_or_default]
     pub role: Option<String>,
 
-/*
+
     // Animation Event
-    pub onbegin: Callback<()>, 
-    pub onend: Callback<()>, 
-    pub onrepeat: Callback<()>,
+    #[prop_or_default]
+    pub onbegin: Option<Callback<MouseEvent>>,
+    #[prop_or_default]
+    pub onend: Option<Callback<MouseEvent>>, 
+    #[prop_or_default]
+    pub onrepeat: Option<Callback<MouseEvent>>,
 
     // Document Event
-    pub onabort: Callback<()>,
-    pub onerror: Callback<()>,
-    pub onresize: Callback<()>,
-    pub onscroll: Callback<()>,
-    pub onunload: Callback<()>,
+    #[prop_or_default]
+    pub onabort: Option<Callback<MouseEvent>>,
+    #[prop_or_default]
+    pub onerror: Option<Callback<MouseEvent>>,
+    #[prop_or_default]
+    pub onresize: Option<Callback<MouseEvent>>,
+    #[prop_or_default]
+    pub onscroll: Option<Callback<MouseEvent>>,
+    #[prop_or_default]
+    pub onunload: Option<Callback<MouseEvent>>,
 
     // Document Element Event 
-    pub oncopy: Callback<()>, 
-    pub oncut: Callback<()>, 
-    pub onpaste: Callback<()>,
+    #[prop_or_default]
+    pub oncopy: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub oncut: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onpaste: Option<Callback<MouseEvent>>,
 
     // Global Event
-    pub oncancel: Callback<()>, 
-    pub oncanplay: Callback<()>, 
-    pub oncanplaythrough: Callback<()>, 
-    pub onchange: Callback<()>, */
     #[prop_or_default]
-    pub onclick: Option<Callback<MouseEvent>>, 
-    /*pub onclose: Callback<()>, 
-    pub oncuechange: Callback<()>, 
-    pub ondblclick: Callback<()>, 
-    pub ondrag: Callback<()>, 
-    pub ondragend: Callback<()>, 
-    pub ondragenter: Callback<()>, 
-    pub ondragexit: Callback<()>, 
-    pub ondragleave: Callback<()>, 
-    pub ondragover: Callback<()>, 
-    pub ondragstart: Callback<()>, 
-    pub ondrop: Callback<()>, 
-    pub ondurationchange: Callback<()>, 
-    pub onemptied: Callback<()>, 
-    pub onended: Callback<()>, 
-    pub onfocus: Callback<()>, 
-    pub oninput: Callback<()>, 
-    pub oninvalid: Callback<()>, 
-    pub onkeydown: Callback<()>, 
-    pub onkeypress: Callback<()>, 
-    pub onkeyup: Callback<()>, 
-    pub onload: Callback<()>, 
-    pub onloadeddata: Callback<()>, 
-    pub onloadedmetadata: Callback<()>, 
-    pub onloadstart: Callback<()>, 
-    pub onmousedown: Callback<()>, 
-    pub onmouseenter: Callback<()>, 
-    pub onmouseleave: Callback<()>, 
-    pub onmousemove: Callback<()>, 
-    pub onmouseout: Callback<()>, 
-    pub onmouseover: Callback<()>, 
-    pub onmouseup: Callback<()>, 
-    pub onmousewheel: Callback<()>, 
-    pub onpause: Callback<()>, 
-    pub onplay: Callback<()>, 
-    pub onplaying: Callback<()>, 
-    pub onprogress: Callback<()>, 
-    pub onratechange: Callback<()>, 
-    pub onreset: Callback<()>,   
-    pub onseeked: Callback<()>, 
-    pub onseeking: Callback<()>, 
-    pub onselect: Callback<()>, 
-    pub onshow: Callback<()>, 
-    pub onstalled: Callback<()>, 
-    pub onsubmit: Callback<()>, 
-    pub onsuspend: Callback<()>, 
-    pub ontimeupdate: Callback<()>, 
-    pub ontoggle: Callback<()>, 
-    pub onvolumechange: Callback<()>, 
-    pub onwaiting: Callback<()>, 
+    pub oncancel: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub oncanplay: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub oncanplaythrough: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onchange: Option<Callback<MouseEvent>>,
+    #[prop_or_default]
+    pub onclick: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onclose: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub oncuechange: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub ondblclick: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub ondrag: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub ondragend: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub ondragenter: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub ondragexit: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub ondragleave: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub ondragover: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub ondragstart: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub ondrop: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub ondurationchange: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onemptied: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onended: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onfocus: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub oninput: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub oninvalid: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onkeydown: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onkeypress: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onkeyup: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onload: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onloadeddata: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onloadedmetadata: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onloadstart: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onmousedown: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onmouseenter: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onmouseleave: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onmousemove: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onmouseout: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onmouseover: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onmouseup: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onmousewheel: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onpause: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onplay: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onplaying: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onprogress: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onratechange: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onreset: Option<Callback<MouseEvent>>,
+    #[prop_or_default]   
+    pub onseeked: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onseeking: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onselect: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onshow: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onstalled: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onsubmit: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onsuspend: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub ontimeupdate: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub ontoggle: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onvolumechange: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onwaiting: Option<Callback<MouseEvent>>, 
 
     // Graphical Event 
-    pub onactivate: Callback<()>, 
-    pub onfocusin: Callback<()>, 
-    pub onfocusout: Callback<()>, */
+    #[prop_or_default]
+    pub onactivate: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onfocusin: Option<Callback<MouseEvent>>,
+    #[prop_or_default] 
+    pub onfocusout: Option<Callback<MouseEvent>>, 
 }
