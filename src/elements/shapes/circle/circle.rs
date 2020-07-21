@@ -549,7 +549,7 @@ impl Component for SvgCircle {
 
     fn view(&self) -> Html {
 
-        let mut line_tag = html! {<line />};
+        let mut line_tag = html! {<circle />};
 
         set_attribute(self.cx.as_ref(), &mut line_tag, "cx");
         set_attribute(self.cy.as_ref(), &mut line_tag, "cy");
