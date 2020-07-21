@@ -102,7 +102,7 @@ pub struct SvgLine {
     aria_valuenow: Option<String>,
     aria_valuetext: Option<String>,
     role: Option<String>,
-
+/*
 
     // Animation Event
     pub onbegin: Callback<()>, 
@@ -125,9 +125,9 @@ pub struct SvgLine {
     pub oncancel: Callback<()>, 
     pub oncanplay: Callback<()>, 
     pub oncanplaythrough: Callback<()>, 
-    pub onchange: Callback<()>, 
+    pub onchange: Callback<()>, */
     pub onclick: Option<Callback<MouseEvent>>, 
-    pub onclose: Callback<()>, 
+    /*pub onclose: Callback<()>, 
     pub oncuechange: Callback<()>, 
     pub ondblclick: Callback<()>, 
     pub ondrag: Callback<()>, 
@@ -180,7 +180,7 @@ pub struct SvgLine {
     // Graphical Event 
     pub onactivate: Callback<()>, 
     pub onfocusin: Callback<()>, 
-    pub onfocusout: Callback<()>, 
+    pub onfocusout: Callback<()>, */
 
 }
 
@@ -360,7 +360,7 @@ impl Component for SvgLine {
             aria_valuenow: props.aria_valuenow,
             aria_valuetext: props.aria_valuetext,
             role: props.role,
-
+            /*
             // Animation Event
             onbegin: props.onbegin, 
             onend: props.onend, 
@@ -382,9 +382,9 @@ impl Component for SvgLine {
             oncancel: props.oncancel, 
             oncanplay: props.oncanplay, 
             oncanplaythrough: props.oncanplaythrough, 
-            onchange: props.onchange, 
+            onchange: props.onchange, */
             onclick: props.onclick, 
-            onclose: props.onclose, 
+            /*onclose: props.onclose, 
             oncuechange: props.oncuechange, 
             ondblclick: props.ondblclick, 
             ondrag: props.ondrag, 
@@ -437,7 +437,7 @@ impl Component for SvgLine {
             // Graphical Event 
             onactivate: props.onactivate, 
             onfocusin: props.onfocusin, 
-            onfocusout: props.onfocusout, 
+            onfocusout: props.onfocusout, */
         }
     }
 
@@ -757,7 +757,7 @@ impl Component for SvgLine {
         self.role = props.role;
 
         // Animation Event
-        self.onbegin = props.onbegin; 
+        /*self.onbegin = props.onbegin; 
         self.onend = props.onend; 
         self.onrepeat = props.onrepeat;
 
@@ -777,9 +777,9 @@ impl Component for SvgLine {
         self.oncancel = props.oncancel; 
         self.oncanplay = props.oncanplay; 
         self.oncanplaythrough = props.oncanplaythrough; 
-        self.onchange = props.onchange; 
+        self.onchange = props.onchange; */
         self.onclick = props.onclick; 
-        self.onclose = props.onclose; 
+        /*self.onclose = props.onclose; 
         self.oncuechange = props.oncuechange; 
         self.ondblclick = props.ondblclick; 
         self.ondrag = props.ondrag; 
@@ -832,7 +832,7 @@ impl Component for SvgLine {
         // Graphical Event 
         self.onactivate = props.onactivate; 
         self.onfocusin = props.onfocusin; 
-        self.onfocusout = props.onfocusout; 
+        self.onfocusout = props.onfocusout; */
 
 
         true
