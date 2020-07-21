@@ -3,13 +3,14 @@ use djed::{
     djed::{Component, ComponentLink, Html, ShouldRender},
     callback::Callback,
     djed::listener::{*},
-    callback::Callback,
 };
 
 use std::rc::Rc;
 use super::line_attributes::LineProps;
 use crate::utils::{set_attribute, set_event};
-use web_sys::{MouseEvent};
+use web_sys::{MouseEvent, AnimationEvent, Event, DragEvent,
+    FocusEvent, KeyboardEvent, ProgressEvent
+};
 
 /// Core Attribute
 /// id, tabindex, style
@@ -105,52 +106,52 @@ pub struct SvgLine {
     role: Option<String>,
 
     // Animation Event
-    onbegin: Option<Callback<MouseEvent>>,
-    onend: Option<Callback<MouseEvent>>, 
-    onrepeat: Option<Callback<MouseEvent>>,
+    onbegin: Option<Callback<AnimationEvent>>,
+    onend: Option<Callback<AnimationEvent>>, 
+    onrepeat: Option<Callback<AnimationEvent>>,
 
     // Document Event
-    onabort: Option<Callback<MouseEvent>>,
-    onerror: Option<Callback<MouseEvent>>,
-    onresize: Option<Callback<MouseEvent>>,
-    onscroll: Option<Callback<MouseEvent>>,
-    onunload: Option<Callback<MouseEvent>>,
+    onabort: Option<Callback<Event>>,
+    onerror: Option<Callback<Event>>,
+    onresize: Option<Callback<Event>>,
+    onscroll: Option<Callback<Event>>,
+    onunload: Option<Callback<Event>>,
 
     // Document Element Event 
-    oncopy: Option<Callback<MouseEvent>>, 
-    oncut: Option<Callback<MouseEvent>>, 
-    onpaste: Option<Callback<MouseEvent>>,
+    oncopy: Option<Callback<Event>>, 
+    oncut: Option<Callback<Event>>, 
+    onpaste: Option<Callback<Event>>,
 
     // Global Event
-    oncancel: Option<Callback<MouseEvent>>, 
-    oncanplay: Option<Callback<MouseEvent>>, 
-    oncanplaythrough: Option<Callback<MouseEvent>>, 
-    onchange: Option<Callback<MouseEvent>>,
+    oncancel: Option<Callback<Event>>, 
+    oncanplay: Option<Callback<Event>>, 
+    oncanplaythrough: Option<Callback<Event>>, 
+    onchange: Option<Callback<ChangeData>>,
     onclick: Option<Callback<MouseEvent>>, 
-    onclose: Option<Callback<MouseEvent>>,
-    oncuechange: Option<Callback<MouseEvent>>,
+    onclose: Option<Callback<Event>>,
+    oncuechange: Option<Callback<Event>>,
     ondblclick: Option<Callback<MouseEvent>>,
-    ondrag: Option<Callback<MouseEvent>>,
-    ondragend: Option<Callback<MouseEvent>>,
-    ondragenter: Option<Callback<MouseEvent>>,
-    ondragexit: Option<Callback<MouseEvent>>,
-    ondragleave: Option<Callback<MouseEvent>>,
-    ondragover: Option<Callback<MouseEvent>>,
-    ondragstart: Option<Callback<MouseEvent>>,
-    ondrop: Option<Callback<MouseEvent>>,
-    ondurationchange: Option<Callback<MouseEvent>>,
-    onemptied: Option<Callback<MouseEvent>>,
-    onended: Option<Callback<MouseEvent>>,
-    onfocus: Option<Callback<MouseEvent>>,
-    oninput: Option<Callback<MouseEvent>>,
-    oninvalid: Option<Callback<MouseEvent>>,
-    onkeydown: Option<Callback<MouseEvent>>,
-    onkeypress: Option<Callback<MouseEvent>>,
-    onkeyup: Option<Callback<MouseEvent>>,
-    onload: Option<Callback<MouseEvent>>,
-    onloadeddata: Option<Callback<MouseEvent>>,
-    onloadedmetadata: Option<Callback<MouseEvent>>,
-    onloadstart: Option<Callback<MouseEvent>>,
+    ondrag: Option<Callback<DragEvent>>,
+    ondragend: Option<Callback<DragEvent>>,
+    ondragenter: Option<Callback<DragEvent>>,
+    ondragexit: Option<Callback<DragEvent>>,
+    ondragleave: Option<Callback<DragEvent>>,
+    ondragover: Option<Callback<DragEvent>>,
+    ondragstart: Option<Callback<DragEvent>>,
+    ondrop: Option<Callback<DragEvent>>,
+    ondurationchange: Option<Callback<Event>>,
+    onemptied: Option<Callback<Event>>,
+    onended: Option<Callback<Event>>,
+    onfocus: Option<Callback<FocusEvent>>,
+    oninput: Option<Callback<InputData>>,
+    oninvalid: Option<Callback<Event>>,
+    onkeydown: Option<Callback<KeyboardEvent>>,
+    onkeypress: Option<Callback<KeyboardEvent>>,
+    onkeyup: Option<Callback<KeyboardEvent>>,
+    onload: Option<Callback<Event>>,
+    onloadeddata: Option<Callback<Event>>,
+    onloadedmetadata: Option<Callback<Event>>,
+    onloadstart: Option<Callback<ProgressEvent>>,
     onmousedown: Option<Callback<MouseEvent>>,
     onmouseenter: Option<Callback<MouseEvent>>,
     onmouseleave: Option<Callback<MouseEvent>>,
@@ -159,28 +160,28 @@ pub struct SvgLine {
     onmouseover: Option<Callback<MouseEvent>>,
     onmouseup: Option<Callback<MouseEvent>>,
     onmousewheel: Option<Callback<MouseEvent>>,
-    onpause: Option<Callback<MouseEvent>>,
-    onplay: Option<Callback<MouseEvent>>,
-    onplaying: Option<Callback<MouseEvent>>,
-    onprogress: Option<Callback<MouseEvent>>,
-    onratechange: Option<Callback<MouseEvent>>,
-    onreset: Option<Callback<MouseEvent>>,
-    onseeked: Option<Callback<MouseEvent>>,
-    onseeking: Option<Callback<MouseEvent>>,
-    onselect: Option<Callback<MouseEvent>>,
-    onshow: Option<Callback<MouseEvent>>,
-    onstalled: Option<Callback<MouseEvent>>,
-    onsubmit: Option<Callback<MouseEvent>>,
-    onsuspend: Option<Callback<MouseEvent>>,
-    ontimeupdate: Option<Callback<MouseEvent>>,
-    ontoggle: Option<Callback<MouseEvent>>,
-    onvolumechange: Option<Callback<MouseEvent>>,
-    onwaiting: Option<Callback<MouseEvent>>, 
+    onpause: Option<Callback<Event>>,
+    onplay: Option<Callback<Event>>,
+    onplaying: Option<Callback<Event>>,
+    onprogress: Option<Callback<ProgressEvent>>,
+    onratechange: Option<Callback<Event>>,
+    onreset: Option<Callback<Event>>,
+    onseeked: Option<Callback<Event>>,
+    onseeking: Option<Callback<Event>>,
+    onselect: Option<Callback<Event>>,
+    onshow: Option<Callback<Event>>,
+    onstalled: Option<Callback<Event>>,
+    onsubmit: Option<Callback<FocusEvent>>,
+    onsuspend: Option<Callback<Event>>,
+    ontimeupdate: Option<Callback<Event>>,
+    ontoggle: Option<Callback<Event>>,
+    onvolumechange: Option<Callback<Event>>,
+    onwaiting: Option<Callback<Event>>, 
 
     // Graphical Event 
-    onactivate: Option<Callback<MouseEvent>>,
-    onfocusin: Option<Callback<MouseEvent>>,
-    onfocusout: Option<Callback<MouseEvent>>,
+    onactivate: Option<Callback<Event>>,
+    onfocusin: Option<Callback<Event>>,
+    onfocusout: Option<Callback<Event>>,
 
 }
 
@@ -285,8 +286,83 @@ impl Component for SvgLine {
             aria_valuetext: props.aria_valuetext,
             role: props.role,
 
+            // Animation Event
+            onbegin: props.onbegin,
+            onend: props.onend, 
+            onrepeat: props.onrepeat,
 
+            // Document Event
+            onabort: props.onabort,
+            onerror: props.onerror,
+            onresize: props.onresize,
+            onscroll: props.onscroll,
+            onunload: props.onunload,
+
+            // Document Element Event 
+            oncopy: props.oncopy, 
+            oncut: props.oncut, 
+            onpaste: props.onpaste,
+
+            // Global Event
+            oncancel: props.oncancel, 
+            oncanplay: props.oncanplay, 
+            oncanplaythrough: props.oncanplaythrough, 
+            onchange: props.onchange,
             onclick: props.onclick, 
+            onclose: props.onclose,
+            oncuechange: props.oncuechange,
+            ondblclick: props.ondblclick,
+            ondrag: props.ondrag,
+            ondragend: props.ondragend,
+            ondragenter: props.ondragenter,
+            ondragexit: props.ondragexit,
+            ondragleave: props.ondragleave,
+            ondragover: props.ondragover,
+            ondragstart: props.ondragstart,
+            ondrop: props.ondrop,
+            ondurationchange: props.ondurationchange,
+            onemptied: props.onemptied,
+            onended: props.onended,
+            onfocus: props.onfocus,
+            oninput: props.oninput,
+            oninvalid: props.oninvalid,
+            onkeydown: props.onkeydown,
+            onkeypress: props.onkeypress,
+            onkeyup: props.onkeyup,
+            onload: props.onload,
+            onloadeddata: props.onloadeddata,
+            onloadedmetadata: props.onloadedmetadata,
+            onloadstart: props.onloadstart,
+            onmousedown: props.onmousedown,
+            onmouseenter: props.onmouseenter,
+            onmouseleave: props.onmouseleave,
+            onmousemove: props.onmousemove,
+            onmouseout: props.onmouseout,
+            onmouseover: props.onmouseover,
+            onmouseup: props.onmouseup,
+            onmousewheel: props.onmousewheel,
+            onpause: props.onpause,
+            onplay: props.onplay,
+            onplaying: props.onplaying,
+            onprogress: props.onprogress,
+            onratechange: props.onratechange,
+            onreset: props.onreset,
+            onseeked: props.onseeked,
+            onseeking: props.onseeking,
+            onselect: props.onselect,
+            onshow: props.onshow,
+            onstalled: props.onstalled,
+            onsubmit: props.onsubmit,
+            onsuspend: props.onsuspend,
+            ontimeupdate: props.ontimeupdate,
+            ontoggle: props.ontoggle,
+            onvolumechange: props.onvolumechange,
+            onwaiting: props.onwaiting, 
+
+            // Graphical Event 
+            onactivate: props.onactivate,
+            onfocusin: props.onfocusin,
+            onfocusout: props.onfocusout,
             
         }
     }
@@ -393,7 +469,7 @@ impl Component for SvgLine {
         self.role = props.role;
 
         // Animation Event
-        /*self.onbegin = props.onbegin; 
+        self.onbegin = props.onbegin; 
         self.onend = props.onend; 
         self.onrepeat = props.onrepeat;
 
@@ -413,9 +489,9 @@ impl Component for SvgLine {
         self.oncancel = props.oncancel; 
         self.oncanplay = props.oncanplay; 
         self.oncanplaythrough = props.oncanplaythrough; 
-        self.onchange = props.onchange; */
+        self.onchange = props.onchange; 
         self.onclick = props.onclick; 
-        /*self.onclose = props.onclose; 
+        self.onclose = props.onclose; 
         self.oncuechange = props.oncuechange; 
         self.ondblclick = props.ondblclick; 
         self.ondrag = props.ondrag; 
@@ -468,7 +544,7 @@ impl Component for SvgLine {
         // Graphical Event 
         self.onactivate = props.onactivate; 
         self.onfocusin = props.onfocusin; 
-        self.onfocusout = props.onfocusout; */
+        self.onfocusout = props.onfocusout;
 
 
         true
@@ -574,14 +650,288 @@ impl Component for SvgLine {
         set_attribute(self.role.as_ref(), &mut line_tag, "role");
 
         
+        // Events
+        // Animation Event
+        if let Some(event) = self.onbegin.as_ref() {
+            let onbegin_listener = onbegin::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onbegin_listener));
+        }
+        if let Some(event) = self.onend.as_ref() {
+            let onend_listener = onend::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onend_listener));
+        } 
+        if let Some(event) = self.onrepeat.as_ref() {
+            let onrepeat_listener = onrepeat::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onrepeat_listener));
+        }
 
+        // Document Event
+        if let Some(event) = self.onabort.as_ref() {
+            let onabort_listener = onabort::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onabort_listener));
+        }
+        if let Some(event) = self.onerror.as_ref() {
+            let onerror_listener = onerror::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onerror_listener));
+        }
+        if let Some(event) = self.onresize.as_ref() {
+            let onresize_listener = onresize::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onresize_listener));
+        }
+        if let Some(event) = self.onscroll.as_ref() {
+            let onscroll_listener = onscroll::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onscroll_listener));
+        }
+        if let Some(event) = self.onunload.as_ref() {
+            let onunload_listener = onunload::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onunload_listener));
+        }
+
+        // Document Element Event 
+        if let Some(event) = self.oncopy.as_ref() {
+            let oncopy_listener = oncopy::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(oncopy_listener));
+        } 
+        if let Some(event) = self.oncut.as_ref() {
+            let oncut_listener = oncut::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(oncut_listener));
+        } 
+        if let Some(event) = self.onpaste.as_ref() {
+            let onpaste_listener = onpaste::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onpaste_listener));
+        }
+
+        // Global Event
+        if let Some(event) = self.oncancel.as_ref() {
+            let oncancel_listener = oncancel::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(oncancel_listener));
+        } 
+        if let Some(event) = self.oncanplay.as_ref() {
+            let oncanplay_listener = oncanplay::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(oncanplay_listener));
+        } 
+        if let Some(event) = self.oncanplaythrough.as_ref() {
+            let oncanplaythrough_listener = oncanplaythrough::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(oncanplaythrough_listener));
+        } 
+        if let Some(event) = self.onchange.as_ref() {
+            let onchange_listener = onchange::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onchange_listener));
+        }
         if let Some(event) = self.onclick.as_ref() {
             let onclick_listener = onclick::Wrapper::new(event.clone());
             set_event(Some(event),&mut line_tag, Rc::new(onclick_listener));
         }
-        /*<button onclick=self.link.callback(|_| Msg::Clicked)>
-                { &self.title }
-            </button>*/
+        if let Some(event) = self.onclose.as_ref() {
+            let onclose_listener = onclose::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onclose_listener));
+        } 
+        if let Some(event) = self.oncuechange.as_ref() {
+            let oncuechange_listener = oncuechange::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(oncuechange_listener));
+        } 
+        if let Some(event) = self.ondblclick.as_ref() {
+            let ondblclick_listener = ondblclick::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(ondblclick_listener));
+        } 
+        if let Some(event) = self.ondrag.as_ref() {
+            let ondrag_listener = ondrag::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(ondrag_listener));
+        } 
+        if let Some(event) = self.ondragend.as_ref() {
+            let ondragend_listener = ondragend::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(ondragend_listener));
+        } 
+        if let Some(event) = self.ondragenter.as_ref() {
+            let ondragenter_listener = ondragenter::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(ondragenter_listener));
+        } 
+        if let Some(event) = self.ondragexit.as_ref() {
+            let ondragexit_listener = ondragexit::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(ondragexit_listener));
+        } 
+        if let Some(event) = self.ondragleave.as_ref() {
+            let ondragleave_listener = ondragleave::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(ondragleave_listener));
+        } 
+        if let Some(event) = self.ondragover.as_ref() {
+            let ondragover_listener = ondragover::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(ondragover_listener));
+        } 
+        if let Some(event) = self.ondragstart.as_ref() {
+            let ondragstart_listener = ondragstart::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(ondragstart_listener));
+        } 
+        if let Some(event) = self.ondrop.as_ref() {
+            let ondrop_listener = ondrop::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(ondrop_listener));
+        } 
+        if let Some(event) = self.ondurationchange.as_ref() {
+            let ondurationchange_listener = ondurationchange::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(ondurationchange_listener));
+        } 
+        if let Some(event) = self.onemptied.as_ref() {
+            let onemptied_listener = onemptied::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onemptied_listener));
+        } 
+        if let Some(event) = self.onended.as_ref() {
+            let onended_listener = onended::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onended_listener));
+        } 
+        if let Some(event) = self.onfocus.as_ref() {
+            let onfocus_listener = onfocus::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onfocus_listener));
+        } 
+        if let Some(event) = self.oninput.as_ref() {
+            let oninput_listener = oninput::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(oninput_listener));
+        } 
+        if let Some(event) = self.oninvalid.as_ref() {
+            let oninvalid_listener = oninvalid::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(oninvalid_listener));
+        } 
+        if let Some(event) = self.onkeydown.as_ref() {
+            let onkeydown_listener = onkeydown::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onkeydown_listener));
+        } 
+        if let Some(event) = self.onkeypress.as_ref() {
+            let onkeypress_listener = onkeypress::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onkeypress_listener));
+        } 
+        if let Some(event) = self.onkeyup.as_ref() {
+            let onkeyup_listener = onkeyup::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onkeyup_listener));
+        } 
+        if let Some(event) = self.onload.as_ref() {
+            let onload_listener = onload::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onload_listener));
+        } 
+        if let Some(event) = self.onloadeddata.as_ref() {
+            let onloadeddata_listener = onloadeddata::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onloadeddata_listener));
+        } 
+        if let Some(event) = self.onloadedmetadata.as_ref() {
+            let onloadedmetadata_listener = onloadedmetadata::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onloadedmetadata_listener));
+        } 
+        if let Some(event) = self.onloadstart.as_ref() {
+            let onloadstart_listener = onloadstart::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onloadstart_listener));
+        } 
+        if let Some(event) = self.onmousedown.as_ref() {
+            let onmousedown_listener = onmousedown::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onmousedown_listener));
+        } 
+        if let Some(event) = self.onmouseenter.as_ref() {
+            let onmouseenter_listener = onmouseenter::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onmouseenter_listener));
+        } 
+        if let Some(event) = self.onmouseleave.as_ref() {
+            let onmouseleave_listener = onmouseleave::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onmouseleave_listener));
+        } 
+        if let Some(event) = self.onmousemove.as_ref() {
+            let onmousemove_listener = onmousemove::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onmousemove_listener));
+        } 
+        if let Some(event) = self.onmouseout.as_ref() {
+            let onmouseout_listener = onmouseout::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onmouseout_listener));
+        } 
+        if let Some(event) = self.onmouseover.as_ref() {
+            let onmouseover_listener = onmouseover::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onmouseover_listener));
+        } 
+        if let Some(event) = self.onmouseup.as_ref() {
+            let onmouseup_listener = onmouseup::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onmouseup_listener));
+        } 
+        if let Some(event) = self.onmousewheel.as_ref() {
+            let onmousewheel_listener = onmousewheel::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onmousewheel_listener));
+        } 
+        if let Some(event) = self.onpause.as_ref() {
+            let onpause_listener = onpause::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onpause_listener));
+        } 
+        if let Some(event) = self.onplay.as_ref() {
+            let onplay_listener = onplay::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onplay_listener));
+        } 
+        if let Some(event) = self.onplaying.as_ref() {
+            let onplaying_listener = onplaying::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onplaying_listener));
+        } 
+        if let Some(event) = self.onprogress.as_ref() {
+            let onprogress_listener = onprogress::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onprogress_listener));
+        } 
+        if let Some(event) = self.onratechange.as_ref() {
+            let onratechange_listener = onratechange::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onratechange_listener));
+        } 
+        if let Some(event) = self.onreset.as_ref() {
+            let onreset_listener = onreset::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onreset_listener));
+        }   
+        if let Some(event) = self.onseeked.as_ref() {
+            let onseeked_listener = onseeked::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onseeked_listener));
+        } 
+        if let Some(event) = self.onseeking.as_ref() {
+            let onseeking_listener = onseeking::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onseeking_listener));
+        } 
+        if let Some(event) = self.onselect.as_ref() {
+            let onselect_listener = onselect::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onselect_listener));
+        } 
+        if let Some(event) = self.onshow.as_ref() {
+            let onshow_listener = onshow::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onshow_listener));
+        } 
+        if let Some(event) = self.onstalled.as_ref() {
+            let onstalled_listener = onstalled::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onstalled_listener));
+        } 
+        if let Some(event) = self.onsubmit.as_ref() {
+            let onsubmit_listener = onsubmit::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onsubmit_listener));
+        } 
+        if let Some(event) = self.onsuspend.as_ref() {
+            let onsuspend_listener = onsuspend::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onsuspend_listener));
+        } 
+        if let Some(event) = self.ontimeupdate.as_ref() {
+            let ontimeupdate_listener = ontimeupdate::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(ontimeupdate_listener));
+        } 
+        if let Some(event) = self.ontoggle.as_ref() {
+            let ontoggle_listener = ontoggle::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(ontoggle_listener));
+        } 
+        if let Some(event) = self.onvolumechange.as_ref() {
+            let onvolumechange_listener = onvolumechange::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onvolumechange_listener));
+        } 
+        if let Some(event) = self.onwaiting.as_ref() {
+            let onwaiting_listener = onwaiting::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onwaiting_listener));
+        } 
+
+        // Graphical Event 
+        if let Some(event) = self.onactivate.as_ref() {
+            let onactivate_listener = onactivate::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onactivate_listener));
+        } 
+        if let Some(event) = self.onfocusin.as_ref() {
+            let onfocusin_listener = onfocusin::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onfocusin_listener));
+        } 
+        if let Some(event) = self.onfocusout.as_ref() {
+            let onfocusout_listener = onfocusout::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onfocusout_listener));
+        } 
 
         line_tag
 

@@ -17,7 +17,7 @@ pub fn set_attribute<'a>(attr: Option<&String>, target: &mut VNode, attr_name: &
 }
 
 
-pub fn set_event<'a>(event: Option<&Callback<MouseEvent>>, target: &mut VNode, listener: Rc<dyn Listener>) {
+pub fn set_event<'a, T: 'a>(event: Option<&Callback<T>>, target: &mut VNode, listener: Rc<dyn Listener>) {
 
     if let Some(_data) = event {
         if let VNode::VTag(tag) = target {
