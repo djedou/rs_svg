@@ -200,7 +200,7 @@ pub struct LineProps {
     #[prop_or_default]
     pub role: Option<String>,
 
-
+/*
     // Animation Event
     pub onbegin: Callback<()>, 
     pub onend: Callback<()>, 
@@ -222,9 +222,9 @@ pub struct LineProps {
     pub oncancel: Callback<()>, 
     pub oncanplay: Callback<()>, 
     pub oncanplaythrough: Callback<()>, 
-    pub onchange: Callback<()>, 
+    pub onchange: Callback<()>, */
     pub onclick: Option<Callback<MouseEvent>>, 
-    pub onclose: Callback<()>, 
+    /*pub onclose: Callback<()>, 
     pub oncuechange: Callback<()>, 
     pub ondblclick: Callback<()>, 
     pub ondrag: Callback<()>, 
@@ -277,5 +277,5 @@ pub struct LineProps {
     // Graphical Event 
     pub onactivate: Callback<()>, 
     pub onfocusin: Callback<()>, 
-    pub onfocusout: Callback<()>, 
+    pub onfocusout: Callback<()>, */
 }
