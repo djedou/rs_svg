@@ -223,7 +223,7 @@ pub struct LineProps {
     pub oncanplay: Callback<()>, 
     pub oncanplaythrough: Callback<()>, 
     pub onchange: Callback<()>, 
-    pub onclick: Callback<MouseEvent>, 
+    pub onclick: Option<Callback<MouseEvent>>, 
     pub onclose: Callback<()>, 
     pub oncuechange: Callback<()>, 
     pub ondblclick: Callback<()>, 

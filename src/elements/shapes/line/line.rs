@@ -4,6 +4,7 @@ use djed::{
     callback::Callback,
     djed::listener::{*},
 };
+
 use std::rc::Rc;
 use super::line_attributes::LineProps;
 use crate::utils::{set_attribute, set_event};
@@ -125,7 +126,7 @@ pub struct SvgLine {
     pub oncanplay: Callback<()>, 
     pub oncanplaythrough: Callback<()>, 
     pub onchange: Callback<()>, 
-    pub onclick: Callback<MouseEvent>, 
+    pub onclick: Option<Callback<MouseEvent>>, 
     pub onclose: Callback<()>, 
     pub oncuechange: Callback<()>, 
     pub ondblclick: Callback<()>, 
@@ -936,8 +937,12 @@ impl Component for SvgLine {
         set_attribute(self.aria_valuetext.as_ref(), &mut line_tag, "aria-valuetext");
         set_attribute(self.role.as_ref(), &mut line_tag, "role");
 
-        let onclick_listener = onclick::Wrapper::new(self.onclick.clone());
-        set_event(Some(&self.onclick.clone()),&mut line_tag, Rc::new(onclick_listener));
+        
+
+        if let Some(event) = self.onclick.as_ref() {
+            let onclick_listener = onclick::Wrapper::new(event.clone());
+            set_event(Some(event),&mut line_tag, Rc::new(onclick_listener));
+        }
         /*<button onclick=self.link.callback(|_| Msg::Clicked)>
                 { &self.title }
             </button>*/
